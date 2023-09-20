@@ -194,8 +194,6 @@ frS_Float5:			ds.b 1
 frS_Float6:			ds.b 1
 frS_Float7:			ds.b 1
 frS_Float8:			ds.b 1
-frS_Slide1:			ds.b 1
-frS_Slide2:			ds.b 1
 frS_Transform1:		ds.b 1
 frS_Transform2:		ds.b 1
 frS_Transform3:		ds.b 1
