@@ -13,6 +13,10 @@
                         {
                             "path": "Objects/Sonic/Palettes/Sonic.bin",
                             "length": 1
+                        },
+                        {
+                            "path": "Objects/Sonic/Palettes/Water Sonic.bin",
+                            "length": 1
                         }
                     ],
                     "art": {
@@ -110,6 +114,26 @@
                         "label": ""
                     },
                     "uuid": "c9d3c1b6-68fe-4c33-b6e6-b0ac18e8c1bc"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Signpost",
+                    "palettes": [],
+                    "art": {
+                        "path": "Objects/Signpost/Uncompressed Art/End Signs.bin",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Signpost/Object Data/Map - End Signs.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": true,
+                        "path": "Objects/Signpost/Object Data/PLC - End Signs.bin",
+                        "label": ""
+                    },
+                    "uuid": "11ab8705-cee9-4ff8-afec-5da3926c3bc8"
                 }
             ],
             "isDirectory": true,
@@ -179,6 +203,46 @@
                         "label": ""
                     },
                     "uuid": "a4e3ebaf-6c1e-45ca-880d-ffa66c5eb099"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Explosion",
+                    "palettes": [],
+                    "art": {
+                        "path": "Objects/Explosion/KosinskiM Art/Explosion.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Explosion/Object Data/Map - Explosion.asm",
+                        "label": "Map_Explosion"
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "05cee92f-f86f-4c5d-a392-6c3bc82e1e67"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Boss Explosion",
+                    "palettes": [],
+                    "art": {
+                        "path": "Objects/Explosion/KosinskiM Art/Boss Explosion.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Explosion/Object Data/Map - Boss Explosion.asm",
+                        "label": "Map_BossExplosion"
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "ab8705ce-e92f-486f-ac5d-a3926c3bc82e"
                 }
             ],
             "isDirectory": true,

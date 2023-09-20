@@ -8,7 +8,7 @@ dac__First = idstart
 	if SMPS_S1DACSamples||SMPS_S2DACSamples
 ; Sonic 1 & 2
 dKick =						SMPS_id(ptr_dac81)
-dSnare =						SMPS_id(ptr_dac82)
+dSnare =					SMPS_id(ptr_dac82)
 dTimpani =					SMPS_id(ptr_dac85)
 dHiTimpani =				SMPS_id(ptr_dac88)
 dMidTimpani =				SMPS_id(ptr_dac89)
@@ -38,8 +38,8 @@ dLowClap = dLowBongo
 ; Sonic 3 & K & 3D
 dSnareS3 =					SMPS_id(ptr_dac92)
 dHighTom =					SMPS_id(ptr_dac93)
-dMidTomS3 =				SMPS_id(ptr_dac94)
-dLowTomS3 =				SMPS_id(ptr_dac95)
+dMidTomS3 =					SMPS_id(ptr_dac94)
+dLowTomS3 =					SMPS_id(ptr_dac95)
 dFloorTomS3 =				SMPS_id(ptr_dac96)
 dKickS3 =					SMPS_id(ptr_dac97)
 dMuffledSnare =				SMPS_id(ptr_dac98)
@@ -56,15 +56,15 @@ dElectricMidTom =			SMPS_id(ptr_dacA2)
 dElectricLowTom =			SMPS_id(ptr_dacA3)
 dElectricFloorTom =			SMPS_id(ptr_dacA4)
 dTightSnare =				SMPS_id(ptr_dacA5)
-dMidpitchSnare =				SMPS_id(ptr_dacA6)
+dMidpitchSnare =			SMPS_id(ptr_dacA6)
 dLooseSnare =				SMPS_id(ptr_dacA7)
 dLooserSnare =				SMPS_id(ptr_dacA8)
 dHiTimpaniS3 =				SMPS_id(ptr_dacA9)
 dLowTimpaniS3 =				SMPS_id(ptr_dacAA)
 dMidTimpaniS3 =				SMPS_id(ptr_dacAB)
 dQuickLooseSnare =			SMPS_id(ptr_dacAC)
-dClick =						SMPS_id(ptr_dacAD)
-dPowerKick =					SMPS_id(ptr_dacAE)
+dClick =					SMPS_id(ptr_dacAD)
+dPowerKick =				SMPS_id(ptr_dacAE)
 dQuickGlassCrash =			SMPS_id(ptr_dacAF)
 	endif
 

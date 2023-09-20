@@ -17,6 +17,7 @@ ptr_mus_through:	SMPS_MUSIC_METADATA	Music_Through, s3TempotoS1($FF), 0		; End o
 ptr_mus_drowning:	SMPS_MUSIC_METADATA	Music_Drowning, s3TempotoS1($02), SMPS_MUSIC_METADATA_FORCE_PAL_SPEED	; Drowning
 
 ptr_mus_inter:		SMPS_MUSIC_METADATA	Music_Inter, 8, 0
+ptr_mus_broken:		SMPS_MUSIC_METADATA Music_Broken, 8, 0	; Broken Moon by U2 Akiyama from 'Touhou Hisouten'
 
 ptr_musend
 
@@ -41,4 +42,6 @@ Music_Through: 		include "Sound/Music/Mus - Sonic Got Through.asm"
 Music_Drowning:		include "Sound/Music/Mus - Drowning.asm"
 	even
 Music_Inter:		include	"Sound/Music/Mus - Intermission from Doom.asm"
+	even
+Music_Broken:		include	"Sound/Music/Mus - Broken Moon.asm"
 	even

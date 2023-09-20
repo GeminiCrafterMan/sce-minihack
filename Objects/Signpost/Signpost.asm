@@ -2,15 +2,19 @@
 ; Signpost (Object)
 ; ---------------------------------------------------------------------------
 
+Obj_Signpost:
+		tst.b	subtype(a0)
+		bne.w	Obj_FallingEndSign
+		jmp		Obj_EndSign
+
 ; =============== S U B R O U T I N E =======================================
 
 Obj_EndSignControl:
 		move.l	#Obj_Wait,address(a0)
 		st	(Level_end_flag).w		; End of level is in effect
 		clr.b	(TitleCard_end_flag).w
-		clr.b	(LevResults_end_flag).w
 		bset	#4,$38(a0)
-		move.w	#$77,$2E(a0)
+		move.w	#$77,wait(a0)
 		move.l	#Obj_EndSignControlDoSign,$34(a0)
 
 .locret:
@@ -19,12 +23,9 @@ Obj_EndSignControl:
 
 Obj_EndSignControlDoSign:
 		move.l	#Obj_EndSignControlAwaitStart,address(a0)
-		clr.b	(Boss_flag).w
 		lea	Child6_EndSign(pc),a2
 		jsr	(CreateChild6_Simple).w
-		lea	PLC_EndSignStuff(pc),a5
-		jsr	(LoadPLC_Raw_KosM).w
-		jmp	AfterBoss_Cleanup(pc)
+		jmp	AfterBoss_Cleanup
 ; ---------------------------------------------------------------------------
 
 Obj_EndSignControlAwaitStart:
@@ -42,25 +43,25 @@ Obj_EndSignControlDoStart:
 
 ; =============== S U B R O U T I N E =======================================
 
-Obj_EndSign:
+Obj_FallingEndSign:
 		moveq	#0,d0
 		move.b	routine(a0),d0
-		move.w	EndSign_Index(pc,d0.w),d1
-		jsr	EndSign_Index(pc,d1.w)
+		move.w	FallingEndSign_Index(pc,d0.w),d1
+		jsr	FallingEndSign_Index(pc,d1.w)
 		lea	PLCPtr_EndSigns(pc),a2
 		jsr	(Perform_DPLC).w
 		jmp	(Draw_Sprite).w
 ; ---------------------------------------------------------------------------
 
-EndSign_Index: offsetTable
-		offsetTableEntry.w Obj_EndSignInit
-		offsetTableEntry.w Obj_EndSignFall
+FallingEndSign_Index: offsetTable
+		offsetTableEntry.w Obj_FallingEndSignInit
+		offsetTableEntry.w Obj_FallingEndSignFall
 		offsetTableEntry.w Obj_EndSignLanded
 		offsetTableEntry.w Obj_EndSignResults
 		offsetTableEntry.w Obj_EndSignAfter
 ; ---------------------------------------------------------------------------
 
-Obj_EndSignInit:
+Obj_FallingEndSignInit:
 		lea	ObjSlot_EndSigns(pc),a1
 		jsr	(SetUp_ObjAttributesSlotted).w
 		btst	#7,(Player_1+art_tile).w
@@ -70,16 +71,16 @@ Obj_EndSignInit:
 .nothighpriority
 		move.w	a0,(Signpost_addr).w						; put RAM address here for use by hidden monitor object
 		move.w	#bytes_to_word(60/2,48/2),y_radius(a0)	; set y_radius and x_radius
-		move.l	#AniRaw_EndSigns1,$30(a0)
+		move.l	#AniRaw_EndSigns,aniraw(a0)
 		move.w	(Camera_Y_pos).w,d0
 		subi.w	#$20,d0
 		move.w	d0,y_pos(a0)								; place vertical position at top of screen
-		sfx	sfx_Signpost
-		lea	Child1_EndSignStub(pc),a2						; make the little stub at the bottom of the signpost
-		jmp	(CreateChild1_Normal).w
+		sfx	sfx_SignpostFall
+		move.w	(Camera_max_X_pos).w,(Camera_min_X_pos).w ; lock screen position
+		rts
 ; ---------------------------------------------------------------------------
 
-Obj_EndSignFall:
+Obj_FallingEndSignFall:
 		move.b	(V_int_run_count+3).w,d0
 		andi.b	#3,d0
 		bne.s	+
@@ -102,19 +103,19 @@ Obj_EndSignFall:
 		add.w	d1,y_pos(a0)
 		move.b	#4,routine(a0)				; if signpost has landed
 		bset	#0,$38(a0)
-		move.w	#$40,$2E(a0)
+		move.w	#$40,wait(a0)
 +		rts
 ; ---------------------------------------------------------------------------
 
 Obj_EndSignLanded:
 		jsr	(Animate_Raw).w
-		subq.w	#1,$2E(a0)					; keep animating while landing for X amount of frames
+		subq.w	#1,wait(a0)					; keep animating while landing for X amount of frames
 		bmi.s	+
 		rts
 ; ---------------------------------------------------------------------------
 +		move.b	#6,routine(a0)
 		clr.l	x_vel(a0)						; clear velocity
-		clr.b	mapping_frame(a0)
+		move.b	(Player_1+character_id).w,mapping_frame(a0)
 		rts
 ; ---------------------------------------------------------------------------
 
@@ -157,7 +158,7 @@ Obj_SignpostSparkle:
 		add.w	d0,y_pos(a0)					; random vertical position
 		move.w	x_pos(a0),$3A(a0)
 		move.w	#$1000,x_vel(a0)
-		move.w	#$20,$2E(a0)
+		move.w	#$20,wait(a0)
 		move.l	#Go_Delete_Sprite,$34(a0)
 
 Obj_SignpostSparkleMain:
@@ -176,17 +177,6 @@ Obj_SignpostSparkleMain:
 		jsr	(Animate_RawNoSST).w
 		jsr	(Obj_Wait).w
 		jmp	(Draw_Sprite).w
-; ---------------------------------------------------------------------------
-
-Obj_SignpostStub:
-		lea	ObjDat_SignpostStub(pc),a1
-		jsr	(SetUp_ObjAttributes).w
-		move.l	#Obj_SignpostStubMain,address(a0)
-
-Obj_SignpostStubMain:
-		jsr	(Refresh_ChildPosition).w
-		jsr	(Child_GetPriority).w
-		jmp	(Child_Draw_Sprite).w
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -220,7 +210,7 @@ sub_83A70:
 +		lsl.w	#4,d0
 		move.w	d0,x_vel(a0)				; Modify strength of X velocity based on how far to the left/right player is
 		move.w	#-$200,y_vel(a0)			; New vertical velocity is always the same
-		sfx	sfx_Signpost
+		sfx	sfx_SignpostFall
 		lea	Child6_EndSignScore(pc),a2
 		jsr	(CreateChild6_Simple).w
 		moveq	#10,d0
@@ -268,15 +258,10 @@ locret_83B02:
 
 EndSign_Range:			dc.w -$20, $40, -$18, $30
 ObjSlot_EndSigns:		subObjSlotData 0, $5CA, $C, 0, Map_EndSigns, $300, $18, $10, 0, 0
-ObjDat_SignpostStub:		subObjData Map_SignpostStub, $5E2, $300, 4, 8, 0, 0
 ObjDat_SignpostSparkle:	subObjData Map_Ring, make_art_tile(ArtTile_Ring,1,0), $280, 8, 8, 4, 0
 Child6_EndSign:
 		dc.w 1-1
 		dc.l Obj_EndSign
-Child1_EndSignStub:
-		dc.w 1-1
-		dc.l Obj_SignpostStub
-		dc.b 0, 24
 Child6_EndSignSparkle:
 		dc.w 1-1
 		dc.l Obj_SignpostSparkle
@@ -284,19 +269,11 @@ Child6_EndSignScore:
 		dc.w 1-1
 		dc.l Obj_EnemyScore
 PLCPtr_EndSigns:
-		dc.l ArtUnc_EndSigns>>1, DPLC_EndSigns
-AniRaw_EndSigns1:
+		dc.l ArtUnc_EndSigns>>1, PLC_EndSigns
+AniRaw_EndSigns:
 		dc.b	1,   0
 		dc.b	4,   5
 		dc.b	6,   1
-		dc.b	4,   5
-		dc.b	6,   3
-		dc.b	4,   5
-		dc.b	6, arfEnd
-AniRaw_EndSigns2:
-		dc.b	1,   1
-		dc.b	4,   5
-		dc.b	6,   2
 		dc.b	4,   5
 		dc.b	6,   3
 		dc.b	4,   5
@@ -306,12 +283,72 @@ AniRaw_SignpostSparkle:
 		dc.b	2,   3
 		dc.b	4, arfEnd
 	even
-
-PLC_EndSignStuff: plrlistheader
-		plreq $5E2, ArtKosM_SignpostStub
-PLC_EndSignStuff_end
 ; ---------------------------------------------------------------------------
 
-		include "Objects/Signpost/Object Data/DPLC - End Signs.asm"
-		include "Objects/Signpost/Object Data/Map - End Signs.asm"
-		include "Objects/Signpost/Object Data/Map - Signpost Stub.asm"
+Obj_EndSign:
+		moveq	#0,d0
+		move.b	routine(a0),d0
+		move.w	EndSign_Index(pc,d0.w),d1
+		jsr	EndSign_Index(pc,d1.w)
+		lea	PLCPtr_EndSigns(pc),a2
+		jsr	(Perform_DPLC).w
+		jmp	(Draw_Sprite).w
+; ---------------------------------------------------------------------------
+
+EndSign_Index: offsetTable
+		offsetTableEntry.w Obj_EndSignInit ;0
+		offsetTableEntry.w Obj_EndSignTouch ;2
+		offsetTableEntry.w Obj_EndSignLanded ;4
+		offsetTableEntry.w Obj_EndSignResults ;6
+		offsetTableEntry.w Obj_EndSignAfter ;8
+; ---------------------------------------------------------------------------
+
+Obj_EndSignInit:
+;		addq.b	#2,routine(a0)
+		lea	ObjSlot_EndSigns(pc),a1
+		jsr	(SetUp_ObjAttributesSlotted).w
+		btst	#7,(Player_1+art_tile).w
+		beq.s	.nothighpriority
+		bset	#7,art_tile(a0)								; signs have same priority as Sonic
+		move.b	#3,mapping_frame(a0) ;Robotnik
+		move.b	#-1,previous_frame(a0)
+
+.nothighpriority
+		move.w	a0,(Signpost_addr).w						; put RAM address here for use by hidden monitor object
+		move.w	#bytes_to_word(60/2,48/2),y_radius(a0)	; set y_radius and x_radius
+
+Obj_EndSignTouch:
+		move.b	#3,mapping_frame(a0) ;Robotnik
+		tst.b	objoff_20(a0)
+		bne.s	.reset
+		lea	EndSign_Range(pc),a1
+		jsr	Check_PlayerInRange;(pc)
+		move.w	#$80,wait(a0) ;set animation timer
+		tst.l	d0
+		beq.s	.notouch		; If neither player is in range, don't do anything
+		tst.w	d0
+		beq.s	.skip
+		addq.b	#2,routine(a0)	;increment routine
+		move.l	#AniRaw_EndSigns,aniraw(a0)
+		sfx		sfx_Signpost	; S2 signpost sound
+		move.w	(Camera_max_X_pos).w,(Camera_min_X_pos).w ; lock screen position
+
+		;The code below only gets to run once, so I'm just commenting it out so that it can run exactly one time every time.
+		;move.b	(V_int_run_count+3).w,d0
+		;andi.b	#3,d0
+		;bne.s	+
+		lea	Child6_EndSignSparkle(pc),a2		; Create a signpost sparkle every 4 frames
+		jsr	(CreateChild6_Simple).w
+
+.skip:
+		swap	d0
+		rts
+.reset:
+		subq.b	#1,objoff_20(a0)
+		rts
+
+	.notouch:
+		rts
+
+Map_EndSigns:		binclude "Objects/Signpost/Object Data/Map - End Signs.bin"
+PLC_EndSigns:		binclude "Objects/Signpost/Object Data/PLC - End Signs.bin"

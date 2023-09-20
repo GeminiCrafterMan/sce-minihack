@@ -202,6 +202,7 @@ x_sub =					x_pos+2 ; word
 y_pos =					$14 ; word, or long when extra precision is required
 y_sub =					y_pos+2 ; word
 mapping_frame =			$22 ; byte
+previous_frame =		$48	; byte
 
 ; ---------------------------------------------------------------------------
 ; Conventions followed by most objects:
