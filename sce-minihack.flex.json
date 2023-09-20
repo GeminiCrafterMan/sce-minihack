@@ -1,0 +1,193 @@
+{
+    "Flex": 2,
+    "name": "SCE Mini-hack",
+    "node": "86c7ae24-b9d5-4ed1-b598-e992d3d929eb",
+    "objects": [
+        {
+            "name": "Player",
+            "children": [
+                {
+                    "format": "Sonic 3&K Player.js",
+                    "name": "Sonic",
+                    "palettes": [
+                        {
+                            "path": "Objects/Sonic/Palettes/Sonic.bin",
+                            "length": 1
+                        },
+                        {
+                            "path": "Objects/Sonic/Palettes/Water Sonic.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "Objects/Sonic/Uncompressed Art/Sonic.bin",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Sonic/Object Data/Map - Sonic.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": true,
+                        "path": "Objects/Sonic/Object Data/PLC - Sonic.bin",
+                        "label": ""
+                    },
+                    "uuid": "86c7ae24-b9d5-4ed1-b598-e992d3d929eb"
+                },
+                {
+                    "format": "Sonic 3&K Player.js",
+                    "name": "Bubble Shield",
+                    "palettes": [],
+                    "art": {
+                        "path": "Objects/Shields/Uncompressed Art/Bubble Shield.bin",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Shields/Object Data/Map - Bubble Shield.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": true,
+                        "path": "Objects/Shields/Object Data/DPLC - Bubble Shield.asm",
+                        "label": ""
+                    },
+                    "uuid": "06f9181d-fede-4241-9113-515de947248c"
+                },
+                {
+                    "format": "Sonic 3&K Player.js",
+                    "name": "Fire Shield",
+                    "palettes": [],
+                    "art": {
+                        "path": "Objects/Shields/Uncompressed Art/Fire Shield.bin",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Shields/Object Data/Map - Fire Shield.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": true,
+                        "path": "Objects/Shields/Object Data/DPLC - Fire Shield.asm",
+                        "label": ""
+                    },
+                    "uuid": "f9181dfe-de62-4111-9351-5de947248c2c"
+                },
+                {
+                    "format": "Sonic 3&K Player.js",
+                    "name": "Lightning Shield",
+                    "palettes": [],
+                    "art": {
+                        "path": "Objects/Shields/Uncompressed Art/Lightning Shield.bin",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Shields/Object Data/Map - Lightning Shield.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": true,
+                        "path": "Objects/Shields/Object Data/DPLC - Lightning Shield.asm",
+                        "label": ""
+                    },
+                    "uuid": "181dfede-6241-4113-915d-e947248c2cef"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Invincibility",
+                    "palettes": [],
+                    "art": {
+                        "path": "Objects/Shields/Uncompressed Art/Invincibility.bin",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Shields/Object Data/Map - Invincibility.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "c9d3c1b6-68fe-4c33-b6e6-b0ac18e8c1bc"
+                }
+            ],
+            "isDirectory": true,
+            "expanded": true,
+            "uuid": "1977a4e3-ebaf-4c1e-85ca-880dffa66c5e"
+        },
+        {
+            "name": "Objects",
+            "children": [
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Spikes",
+                    "palettes": [],
+                    "art": {
+                        "path": "Objects/Spikes/KosinskiM Art/SpikesSprings.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Spikes/Object Data/Map - Spikes.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "1dfede62-4111-4351-9de9-47248c2cefb7",
+                    "expanded": true
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Monitor",
+                    "palettes": [],
+                    "art": {
+                        "path": "Objects/Monitor/KosinskiM Art/Monitors.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Monitor/Object Data/Map - Monitor.asm",
+                        "label": "Map_Monitor"
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "fede6241-1113-415d-a947-248c2cefb774"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Button",
+                    "palettes": [],
+                    "art": {
+                        "path": "Objects/Button/KosinskiM Art/Gray Button.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Button/Object Data/Map - Button.asm",
+                        "label": "Map_Button"
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "a4e3ebaf-6c1e-45ca-880d-ffa66c5eb099"
+                }
+            ],
+            "isDirectory": true,
+            "expanded": true,
+            "uuid": "77a4e3eb-af6c-4e45-8a88-0dffa66c5eb0"
+        }
+    ]
+}
