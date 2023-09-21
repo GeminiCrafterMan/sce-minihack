@@ -14,12 +14,3 @@ Pal_WaterDEZ:		binclude "Levels/DEZ/Palettes/Water Death Egg Zone.bin"
 	even
 Pal_GHZEX:			binclude "Levels/GHZ/Palettes/Green Hill Zone EX.bin"
 	even
-
-; ===========================================================================
-; Dynamic palette
-; ===========================================================================
-
-AnPal_PalDEZ12_1:	binclude "Levels/DEZ/Palettes/Animate/1.bin"
-	even
-AnPal_PalDEZ12_2:	binclude "Levels/DEZ/Palettes/Animate/2.bin"
-	even

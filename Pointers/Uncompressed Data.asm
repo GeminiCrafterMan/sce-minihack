@@ -15,16 +15,7 @@ ArtUnc_EndSigns:	binclude "Objects/Signpost/Uncompressed Art/End Signs.bin"
 ; ===========================================================================
 ; Animated uncompressed graphics
 ; ===========================================================================
-
-ArtUnc_AniDEZ__3:			binclude "Levels/DEZ/Animated Tiles/Uncompressed Art/3.bin"
-	even
-ArtUnc_AniDEZ__4:			binclude "Levels/DEZ/Animated Tiles/Uncompressed Art/4.bin"
-	even
-ArtUnc_AniDEZ__5:			binclude "Levels/DEZ/Animated Tiles/Uncompressed Art/5.bin"
-	even
-ArtUnc_AniDEZ__6:			binclude "Levels/DEZ/Animated Tiles/Uncompressed Art/6.bin"
-	even
-	; Green Hill
+; Green Hill
 Art_GhzFlowerStalk:			binclude "Levels/GHZ/Animated Tiles/Uncompressed Art/GHZ Flower Stalk.bin"
 	even
 Art_GhzWater:				binclude "Levels/GHZ/Animated Tiles/Uncompressed Art/GHZ Waterfall.bin"
