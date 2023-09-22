@@ -15,6 +15,9 @@ ArtUnc_EndSigns:	binclude "Objects/Signpost/Uncompressed Art/End Signs.bin"
 ; ===========================================================================
 ; Animated uncompressed graphics
 ; ===========================================================================
+; Death Egg
+Art_DEZFan:					binclude "Levels/DEZ/Animated Tiles/Uncompressed Art/Fan.bin"
+	even
 ; Green Hill
 Art_GhzFlowerStalk:			binclude "Levels/GHZ/Animated Tiles/Uncompressed Art/GHZ Flower Stalk.bin"
 	even

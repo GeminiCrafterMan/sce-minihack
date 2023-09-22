@@ -13,22 +13,22 @@ v_player:								= *
 Object_RAM:							ds.b object_size
 									ds.b object_size
 Reserved_object_3:					ds.b object_size			; During a level, an object whose sole purpose is to clear the collision response list is stored here
-Dynamic_object_RAM:				ds.b object_size*90		; 90 objects
+Dynamic_object_RAM:					ds.b object_size*90		; 90 objects
 Dynamic_object_RAM_end				= *
 									ds.b object_size
 v_Dust:								ds.b object_size
 v_Shield:							ds.b object_size
 									ds.b object_size
-v_Breathing_bubbles:					ds.b object_size
+v_Breathing_bubbles:				ds.b object_size
+									ds.b object_size
+v_Super_stars:						ds.b object_size
 									ds.b object_size
 									ds.b object_size
-									ds.b object_size
-									ds.b object_size
-									ds.b object_size
+v_Super_stars_2:					ds.b object_size
 									ds.b object_size
 									ds.b object_size
 v_WaterWave:						ds.b object_size
-v_Invincibility_stars:					ds.b object_size*4			; 4 objects
+v_Invincibility_stars:				ds.b object_size*4			; 4 objects
 									ds.b $34					; null
 Object_RAM_end						= *
 
@@ -349,6 +349,27 @@ Apparent_zone:						= *
 Apparent_zone_and_act:				ds.b 1
 a_act:								= *
 Apparent_act:						ds.b 1
+
+v_super:							= *
+Super_Sonic_flag:					= *
+Super_Sonic_Knux_flag:				ds.b 1
+v_emeralds:							= *
+Emerald_count:						= *
+Chaos_emerald_count:				ds.b 1
+Super_emerald_count:				ds.b 1
+Emeralds_converted_flag:			ds.b 1
+Super_palette_status:				ds.b 1
+Palette_timer:						ds.b 1
+Super_frame_count:					ds.w 1
+Palette_frame:						ds.w 1
+Palette_frame_Tails:				ds.b 1
+Palette_timer_Tails:				ds.b 1
+Player_mode:						ds.b 1
+									ds.b 1
+
+Disable_wall_grab:					ds.b 1
+Gliding_collision_flags:			ds.b 1
+Glide_screen_shake:					ds.l 1
 
 f_timeover:							= *
 Time_over_flag:						ds.b 1

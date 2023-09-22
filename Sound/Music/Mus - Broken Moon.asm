@@ -15,53 +15,48 @@ BrokenMoon_Header:
 
 ; DAC Data
 BrokenMoon_DAC:
-	dc.b	nRst, $08
 	smpsPan             panCenter, $00
-	dc.b	$04
 	smpsSetTempoMod     $07
-	dc.b	$18, dSnare, $06, dKick, $03, $03, dCrashCymbal, dKick
+	dc.b	dSnareS3, $06, dKickS3, $03, $03, dCrashCymbal, dKickS3
 
 BrokenMoon_Loop00:
-	dc.b	dKick, $06, $09
+	dc.b	dKickS3, $06, $09
 
 BrokenMoon_Loop01:
-	dc.b	$03, dClap, $06, dLowTimpani, $03, dKick, $06, $03, $06, dClap
+	dc.b	$03, dClapS3, $06, dQuickLooseSnare, $03, dKickS3, $06, $03, $06, dClapS3
 	smpsLoop            $00, $08, BrokenMoon_Loop00
-	dc.b	dKick, $03, dSnare, dKick, $09
+	dc.b	dKickS3, $03, dSnareS3, dKickS3, $09
 	smpsLoop            $01, $02, BrokenMoon_Loop01
 
 BrokenMoon_Loop02:
-	dc.b	$03, dClap, $06, dLowTimpani, $03, dKick, $06, $03, $06, dClap, dKick, dKick
+	dc.b	$03, dClapS3, $06, dQuickLooseSnare, $03, dKickS3, $06, $03, $06, dClapS3, dKickS3, dKickS3
 	dc.b	$09
 	smpsLoop            $00, $06, BrokenMoon_Loop02
-	dc.b	$03, dClap, $06, dLowTimpani, $03, dKick, $06, $03, $06, dClap, dKick, dKick
-	dc.b	$03, dSnare, dSnare, dKick, dClap, dSnare, dSnare, dKick, $06, $02, dSnare, $01
-	dc.b	dKick, $03, dSnare, dSnare, $02, $01, $02, $01
+	dc.b	$03, dClapS3, $06, dQuickLooseSnare, $03, dKickS3, $06, $03, $06, dClapS3, dKickS3, dKickS3
+	dc.b	$03, dSnareS3, dSnareS3, dKickS3, dClapS3, dSnareS3, dSnareS3, dKickS3, $06, $02, dSnareS3, $01
+	dc.b	dKickS3, $03, dSnareS3, dSnareS3, $02, $01, $02, $01
 
 BrokenMoon_Loop04:
-	dc.b	dKick, $03, dSnare, dKick
+	dc.b	dKickS3, $03, dSnareS3, dKickS3
 
 BrokenMoon_Loop03:
-	dc.b	$09, $03, dClap, $06, dLowTimpani, $03, dKick, $06, $03, $06, dClap, dKick
+	dc.b	$09, $03, dClapS3, $06, dQuickLooseSnare, $03, dKickS3, $06, $03, $06, dClapS3, dKickS3
 	smpsLoop            $00, $07, BrokenMoon_Loop03
-	dc.b	$09, $03, dClap, $06, dLowTimpani, $03, dKick, $06, $03, $06, dClap
+	dc.b	$09, $03, dClapS3, $06, dQuickLooseSnare, $03, dKickS3, $06, $03, $06, dClapS3
 	smpsLoop            $01, $02, BrokenMoon_Loop04
-	dc.b	dKick, $03, dSnare, dKick
+	dc.b	dKickS3, $03, dSnareS3, dKickS3
 
 BrokenMoon_Loop05:
-	dc.b	$09, $03, dClap, $06, dLowTimpani, $03, dKick, $06, $03, $06, dClap, dKick
+	dc.b	$09, $03, dClapS3, $06, dQuickLooseSnare, $03, dKickS3, $06, $03, $06, dClapS3, dKickS3
 	smpsLoop            $00, $07, BrokenMoon_Loop05
-	dc.b	$03, dSnare, dSnare, dKick, dClap, dSnare, dSnare, dKick, $06, $02, dSnare, $01
-	dc.b	dKick, $03, dSnare, dSnare, $02, $01, $02, $01, dKick, $03, dSnare, $0F
+	dc.b	$03, dSnareS3, dSnareS3, dKickS3, dClapS3, dSnareS3, dSnareS3, dKickS3, $06, $02, dSnareS3, $01
+	dc.b	dKickS3, $03, dSnareS3, dSnareS3, $02, $01, $02, $01, dKickS3, $03, dSnareS3, $0F
 	smpsStop
 
 ; FM3 Data
 BrokenMoon_FM1:
-	dc.b	nRst, $08
-	smpsPan             panCenter, $00
-	dc.b	$04
 	smpsSetvoice        $01
-	dc.b	$18, nC3, $06, nC4, $03, $03, nBb2, nBb2, nBb3, $06
+	dc.b	nC3, $06, nC4, $03, $03, nBb2, nBb2, nBb3, $06
 
 BrokenMoon_Loop08:
 	dc.b	nAb2, $09, nD3, $03, nEb3, nAb2, $06, nBb2, nF3, $03, $03, nBb2
@@ -89,50 +84,11 @@ BrokenMoon_Loop08:
 	dc.b	nAb2, nBb2, $06, nBb3, $03, $03, nBb2, $06, nC3, $03, nCs3, nD3
 	dc.b	nC3, nC4, $06, nC3, $03, nG3, $06, nC3, $03, nBb3, $06, nC3
 	dc.b	$03, nG3, nC3, nD3, nC3, nG3, $06, nRst, $0C
-	smpsSetvoice        $05
-	smpsStop
-
-; FM4 Data
-BrokenMoon_FM2:
-	dc.b	nRst, $08
-	smpsPan             panCenter, $00
-	dc.b	$04
-	smpsSetvoice        $02
-	dc.b	$18, nG3, $0C
-
-BrokenMoon_Loop07:
-	dc.b	nC5, $06, nBb4, nEb3, $18, nF3, nG3, $24
-	smpsLoop            $00, $17, BrokenMoon_Loop07
-	dc.b	nC5, $06, nBb4, nEb3, $18, nF3, nG3, $30, nRst, $0C
-	smpsSetvoice        $05
-	smpsStop
-
-; FM5 Data
-BrokenMoon_FM3:
-	dc.b	nRst, $08
-	smpsPan             panCenter, $00
-	dc.b	$04
-	smpsSetvoice        $03
-	dc.b	$30
-	smpsPan             panCenter, $00
-
-BrokenMoon_Loop06:
-	dc.b	nAb3, $06, $06, $03, $06, $03, nRst, nBb3, $06, $03, $06, $06
-	dc.b	nC4, nC4, nC4, $03, $06, $03, nRst, nC4, $06, $03, $06, nBb3
-	smpsLoop            $00, $17, BrokenMoon_Loop06
-	dc.b	nAb3, nAb3, nAb3, $03, $06, $03, nRst, nBb3, $06, $03, $06, $06
-	dc.b	nC4, nC4, nC4, $03, $06, $03, nRst, nC4, $06, $03, $06, $06
-	dc.b	nRst, $0C
-	smpsSetvoice        $05
 	smpsStop
 
 ; FM6 Data
-BrokenMoon_FM4:
-	dc.b	nRst, $08
-	smpsPan             panCenter, $00
-	dc.b	$04
+BrokenMoon_FM2:
 	smpsSetvoice        $00
-	dc.b	$18
 	smpsModSet          $00, $01, $01, $04
 	smpsPan             panCenter, $00
 	dc.b	nG4, $06, nBb4, nC5, nEb5, nF5, $0C, nEb5, $06, nF5, nG5, $0C
@@ -181,13 +137,42 @@ BrokenMoon_FM4:
 	dc.b	nG5, nF5, nG5, $02, nAb5, nA5, nBb5, $06, nC6, $26
 	smpsPan             panCenter, $00
 	dc.b	smpsNoAttack, $07, nRst, $0C
+	smpsStop
+
+; FM5 Data
+BrokenMoon_FM3:
+	smpsSetvoice        $03
+	smpsPan             panCenter, $00
+	dc.b	nRst, $18
+
+BrokenMoon_Loop06:
+	dc.b	nAb3, $06, $06, $03, $06, $03, nRst, nBb3, $06, $03, $06, $06
+	dc.b	nC4, nC4, nC4, $03, $06, $03, nRst, nC4, $06, $03, $06, nBb3
+	smpsLoop            $00, $17, BrokenMoon_Loop06
+	dc.b	nAb3, nAb3, nAb3, $03, $06, $03, nRst, nBb3, $06, $03, $06, $06
+	dc.b	nC4, nC4, nC4, $03, $06, $03, nRst, nC4, $06, $03, $06, $06
+	dc.b	nRst, $0C
+	smpsSetvoice        $05
+	smpsStop
+
+
+; FM4 Data
+BrokenMoon_FM4:
+	smpsPan             panCenter, $00
+	smpsSetvoice        $02
+	dc.b	nG3, $0C
+
+BrokenMoon_Loop07:
+	dc.b	nC5, $06, nBb4, nEb3, $18, nF3, nG3, $24
+	smpsLoop            $00, $17, BrokenMoon_Loop07
+	dc.b	nC5, $06, nBb4, nEb3, $18, nF3, nG3, $30, nRst, $0C
 	smpsSetvoice        $05
 	smpsStop
 
 ; PSG3 Data
 BrokenMoon_PSG3:
 	smpsPSGform         $E7
-	dc.b	nRst, $33, nMaxPSG, $03
+	dc.b	nRst, $F, nMaxPSG, $03
 	smpsPSGvoice        fTone_02
 
 BrokenMoon_Loop09:
@@ -257,13 +242,8 @@ BrokenMoon_Loop0F:
 
 ; PSG1 Data
 BrokenMoon_PSG1:
-	dc.b	nRst, $08
 	smpsPan             panCenter, $00
-	dc.b	$04
-	smpsSetvoice        $00
-	dc.b	$18
 	smpsModSet          $00, $01, $01, $04
-	smpsPan             panCenter, $00
 	dc.b	nG4, $06, nBb4, nC5, nEb5, nF5, $0C, nEb5, $06, nF5, nG5, $0C
 	dc.b	nEb5, $06, nC5, nBb4, nG4, nEb5, nF5, nC5, $0C, $06, nEb5, nF5
 	dc.b	$0C, nEb5, $06, nF5, nG5, $0C, nBb5, $06, nC6, nEb6, nD6, nC6
@@ -312,11 +292,8 @@ BrokenMoon_PSG1:
 	dc.b	smpsNoAttack, $07, nRst, $0C
 	smpsStop
 ; PSG2 Data
-BrokenMoon_PSG2:	dc.b	nRst, $08
+BrokenMoon_PSG2:
 	smpsPan             panCenter, $00
-	dc.b	$04
-	smpsSetvoice        $00
-	dc.b	$18
 	smpsModSet          $00, $01, $01, $04
 	smpsPan             panCenter, $00
 	dc.b	nC4, $06, nD4, nEb4, nG4, nAb4, $0C, nG4, $06, nAb4, nBb4, $0C

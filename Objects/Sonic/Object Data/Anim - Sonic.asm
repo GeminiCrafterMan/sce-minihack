@@ -68,6 +68,38 @@ SonAni_Transform:	dc.b	2, frS_Transform1, frS_Transform1, frS_Transform2, frS_Tr
 SonAni_Fall:		dc.b    3, frS_Fall1, frS_Fall2, afEnd
 	even
 
+
+AniSuperSonic:
+Ani_SuperSonic: offsetTable
+		offsetTableEntry.w SonAni_Walk
+		offsetTableEntry.w SonAni_Run
+		offsetTableEntry.w SonAni_Roll
+		offsetTableEntry.w SonAni_Roll2
+		offsetTableEntry.w SonAni_Push
+		offsetTableEntry.w SonAni_Wait
+		offsetTableEntry.w SonAni_Balance
+		offsetTableEntry.w SonAni_LookUp
+		offsetTableEntry.w SonAni_Duck
+		offsetTableEntry.w SonAni_Spindash
+		offsetTableEntry.w SonAni_MGZHang
+		offsetTableEntry.w SonAni_Balance2
+		offsetTableEntry.w SonAni_Stop
+		offsetTableEntry.w SonAni_Float1
+		offsetTableEntry.w SonAni_Float2
+		offsetTableEntry.w SonAni_Spring
+		offsetTableEntry.w SonAni_LZHang
+		offsetTableEntry.w SonAni_Victory
+		offsetTableEntry.w SonAni_Hang
+		offsetTableEntry.w SonAni_GetAir
+		offsetTableEntry.w SonAni_Burnt
+		offsetTableEntry.w SonAni_Drown
+		offsetTableEntry.w SonAni_Death
+		offsetTableEntry.w SonAni_Hurt
+		offsetTableEntry.w SonAni_Null
+		offsetTableEntry.w SonAni_Mach
+		offsetTableEntry.w SonAni_Transform
+		offsetTableEntry.w SonAni_Fall
+
 id_Walk:			equ	(SonAni_Walk_ptr-AniSonic)/2
 id_Run:				equ	(SonAni_Run_ptr-AniSonic)/2
 id_Roll:			equ	(SonAni_Roll_ptr-AniSonic)/2

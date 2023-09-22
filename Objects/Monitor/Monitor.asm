@@ -53,7 +53,7 @@ Obj_MonitorMain:
 		lea	(Player_1).w,a1
 		moveq	#p1_standing_bit,d6
 		bsr.s	SolidObject_Monitor_SonicKnux
-		jsr	Add_SpriteToCollisionResponseList(pc)
+		jsr	Add_SpriteToCollisionResponseList
 		lea	Ani_Monitor(pc),a1
 		jsr	(Animate_Sprite).w
 
@@ -83,7 +83,7 @@ Obj_MonitorFallUpsideUp:
 		jsr	(MoveSprite).w
 		tst.w	y_vel(a0)						; Is monitor moving up?
 		bmi.s	locret_1D694						; If so, return
-		jsr	ObjCheckFloorDist(pc)
+		jsr	ObjCheckFloorDist
 		tst.w	d1								; Is monitor in the ground?
 		beq.s	.inground						; If so, branch
 		bpl.s	locret_1D694						; if not, return
@@ -99,7 +99,7 @@ Obj_MonitorFallUpsideDown:
 		jsr	(MoveSprite_ReverseGravity).w
 		tst.w	y_vel(a0)						; Is monitor moving down?
 		bmi.s	locret_1D694						; If so, return
-		jsr	ObjCheckCeilingDist(pc)
+		jsr	ObjCheckCeilingDist
 		tst.w	d1								; Is monitor in the ground (ceiling)?
 		beq.s	.inground						; If so, branch
 		bpl.s	locret_1D694						; if not, return
@@ -119,7 +119,7 @@ SolidObject_Monitor_SonicKnux:
 		bne.s	Monitor_ChkOverEdge				; If so, branch
 		cmpi.b	#id_Roll,anim(a1)					; Is Sonic/Knux in their rolling animation?
 		beq.s	locret_1D694						; If so, return
-		jmp	SolidObject_cont(pc)
+		jmp	SolidObject_cont
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -147,7 +147,7 @@ Monitor_ChkOverEdge:
 
 Monitor_CharStandOn:
 		move.w	d4,d2
-		jsr	MvSonicOnPtfm(pc)
+		jsr	MvSonicOnPtfm
 		moveq	#0,d4
 		rts
 
@@ -209,7 +209,7 @@ Obj_MonitorContents:
 off_1D7C8: offsetTable
 		offsetTableEntry.w loc_1D7CE	; 0
 		offsetTableEntry.w loc_1D81A	; 2
-		offsetTableEntry.w loc_1DB2E	; 4
+		offsetTableEntry.w Obj_MonitorContents_Wait	; 4
 ; ---------------------------------------------------------------------------
 
 loc_1D7CE:
@@ -271,15 +271,15 @@ loc_1D850:
 
 off_1D87C: offsetTable
 		offsetTableEntry.w Monitor_Give_Eggman			; 0
-		offsetTableEntry.w Monitor_Give_Eggman			; 2
+		offsetTableEntry.w Monitor_Give_HyperSonic			; 2
 		offsetTableEntry.w Monitor_Give_Eggman			; 4
-		offsetTableEntry.w Monitor_Give_Rings				; 6
-		offsetTableEntry.w Monitor_Give_Super_Sneakers		; 8
-		offsetTableEntry.w Monitor_Give_Fire_Shield			; A
-		offsetTableEntry.w Monitor_Give_Lightning_Shield	; C
-		offsetTableEntry.w Monitor_Give_Bubble_Shield		; E
-		offsetTableEntry.w Monitor_Give_Invincibility			; 10
-		offsetTableEntry.w Monitor_Give_Eggman			; 12
+		offsetTableEntry.w Monitor_Give_Rings			; 6
+		offsetTableEntry.w Monitor_Give_Super_Sneakers	; 8
+		offsetTableEntry.w Monitor_Give_Fire_Shield		; A
+		offsetTableEntry.w Monitor_Give_Lightning_Shield; C
+		offsetTableEntry.w Monitor_Give_Bubble_Shield	; E
+		offsetTableEntry.w Monitor_Give_Invincibility	; 10
+		offsetTableEntry.w Monitor_Give_SuperSonic		; 12
 ; ---------------------------------------------------------------------------
 
 Monitor_Give_Eggman:
@@ -341,11 +341,45 @@ Monitor_Give_Invincibility:
 		rts
 ; ---------------------------------------------------------------------------
 
-loc_1DB2E:
+Obj_MonitorContents_Wait:
 		subq.w	#1,anim_frame_timer(a0)
 		bmi.w	loc_1EBB6
 		jmp	(Draw_Sprite).w
 ; ---------------------------------------------------------------------------
+
+Monitor_Give_SuperSonic:
+		move.b	#1,(Super_Sonic_Knux_flag).w		; Super
+;		music	bgm_S3Invincible
+;		move.l	#Obj_SuperSonicKnux_Stars,(v_Super_stars).w
+;		move.b	#1,(v_Super_stars+anim).w
+		bra.s	Monitor_Give_SuperHyper
+; ---------------------------------------------------------------------------
+
+Monitor_Give_HyperSonic:
+		move.b	#-1,(Super_Sonic_Knux_flag).w		; Hyper
+;		music	bgm_SKInvincible
+;		move.l	#Obj_HyperSonicKnux_Trail,(v_Super_stars).w
+;		move.w	#Player_1,(v_Super_stars+parent).w
+;		move.l	#Obj_HyperSonic_Stars,(v_Invincibility_stars).w
+;		move.b	#1,(v_Invincibility_stars+anim).w
+;		bra.s	Monitor_Give_SuperHyper				; runs right into it
+; ---------------------------------------------------------------------------
+
+Monitor_Give_SuperHyper:
+		addi.w	#50,(Ring_count).w
+		move.b	#1,(Super_palette_status).w
+		move.b	#$F,(Palette_timer).w
+		move.w	#60,(Super_frame_count).w
+		move.b	#$81,(Player_1+object_control).w
+		move.b	#id_Transform,(Player_1+anim).w
+
+	.continued:
+		move.w	#$A00,(Sonic_Knux_top_speed).w
+		move.w	#$30,(Sonic_Knux_acceleration).w
+		move.w	#$100,(Sonic_Knux_deceleration).w
+		move.b	#0,(Player_1+invincibility_timer).w
+		bset	#Status_Invincible,status_secondary(a1)
+		sfx	sfx_SuperTransform, 1
 
 		include "Objects/Monitor/Object Data/Anim - Monitor.asm"
 		include "Objects/Monitor/Object Data/Map - Monitor.asm"

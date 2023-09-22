@@ -2,8 +2,6 @@
 ; Uncompressed player graphics
 ; ===========================================================================
 
-ArtUnc_Sonic:			binclude "Objects/Sonic/Uncompressed Art/Sonic.bin"
-	even
 ArtUnc_DashDust:		binclude "Objects/Spin Dust/Uncompressed Art/Dash Dust.bin"
 	even
 ArtUnc_AirCountDown:	binclude "Objects/Count Down/Uncompressed Art/Air Countdown.bin"

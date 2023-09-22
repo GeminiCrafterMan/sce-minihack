@@ -43,6 +43,7 @@ ptr_snd5B:	SMPS_SFX_METADATA	Sound5B, $70, 0
 ptr_snd5C:	SMPS_SFX_METADATA	Sound5C, $70, 0
 ptr_snd5D:	SMPS_SFX_METADATA	Sound5D, $70, 0
 ptr_snd5E:	SMPS_SFX_METADATA	Sound5E, $70, 0
+ptr_snd5F:	SMPS_SFX_METADATA	Sound5F, $70, 0
 
 ptr_sndend
 ; ---------------------------------------------------------------------------
@@ -51,7 +52,7 @@ ptr_sndend
 
 Sound40:	include	"Sound/SFX/Snd - Ring.asm"
 	even
-Sound41:		include	"Sound/SFX/Snd - Ring Left Speaker.asm"
+Sound41:	include	"Sound/SFX/Snd - Ring Left Speaker.asm"
 	even
 Sound42:	include	"Sound/SFX/Snd - Ring Loss.asm"
 	even
@@ -83,7 +84,7 @@ Sound4F:	include	"Sound/SFX/Snd - Electric Attack.asm"
 	even
 Sound50:	include	"Sound/SFX/Snd - Spike Hit.asm"
 	even
-Sound51:		include	"Sound/SFX/Snd - Spike Move.asm"
+Sound51:	include	"Sound/SFX/Snd - Spike Move.asm"
 	even
 Sound52:	include	"Sound/SFX/Snd - Drown.asm"
 	even
@@ -110,4 +111,6 @@ Sound5C:	include	"Sound/SFX/Snd - Switch.asm"
 Sound5D:	include	"Sound/SFX/Snd - Register.asm"
 	even
 Sound5E:	include	"Sound/SFX/Snd - Signpost Fall.asm"
+	even
+Sound5F:	include	"Sound/SFX/Snd - Super Transform.asm"
 	even

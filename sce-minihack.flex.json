@@ -1,7 +1,7 @@
 {
     "Flex": 2,
     "name": "SCE Mini-hack",
-    "node": "a4e3ebaf-6c1e-45ca-880d-ffa66c5eb099",
+    "node": "86c7ae24-b9d5-4ed1-b598-e992d3d929eb",
     "objects": [
         {
             "name": "Player",
@@ -31,6 +31,35 @@
                     "dplcs": {
                         "enabled": true,
                         "path": "Objects/Sonic/Object Data/PLC - Sonic.bin",
+                        "label": ""
+                    },
+                    "uuid": "6c6e681e-8ca0-4bbb-b510-4d9ea9895566"
+                },
+                {
+                    "format": "Sonic 3&K Player.js",
+                    "name": "Super Sonic",
+                    "palettes": [
+                        {
+                            "path": "Objects/Sonic/Palettes/Sonic.bin",
+                            "length": 1
+                        },
+                        {
+                            "path": "Objects/Sonic/Palettes/Water Sonic.bin",
+                            "length": 1
+                        }
+                    ],
+                    "art": {
+                        "path": "Objects/Sonic/Uncompressed Art/Super Sonic.bin",
+                        "compression": "Uncompressed",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Sonic/Object Data/Map - Super Sonic.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": true,
+                        "path": "Objects/Sonic/Object Data/PLC - Super Sonic.bin",
                         "label": ""
                     },
                     "uuid": "86c7ae24-b9d5-4ed1-b598-e992d3d929eb"
