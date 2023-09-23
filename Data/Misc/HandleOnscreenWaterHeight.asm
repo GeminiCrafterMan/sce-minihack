@@ -115,10 +115,16 @@ StartingWaterHeights:
 		dc.w $400	; DEZ 3
 		dc.w $400	; DEZ 4
 
+		dc.w $400	; DEZ 1
+		dc.w $400	; DEZ 2
+		dc.w $400	; DEZ 3
+		dc.w $400	; DEZ 4
+
 		zonewarning StartingWaterHeights,(2*4)
 ; ---------------------------------------------------------------------------
 
 WaterPalette_Index:
+		dc.b palid_WaterDEZ, palid_WaterDEZ, palid_WaterDEZ, palid_WaterDEZ		; DEZ 1,2,3,4
 		dc.b palid_WaterDEZ, palid_WaterDEZ, palid_WaterDEZ, palid_WaterDEZ		; DEZ 1,2,3,4
 
 		zonewarning WaterPalette_Index,(1*4)

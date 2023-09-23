@@ -20,6 +20,11 @@ Offs_PLCAnimals: offsetTable
 		offsetTableEntry.w PLCAnimals_DEZ1	; DEZ3
 		offsetTableEntry.w PLCAnimals_DEZ1	; DEZ4
 
+		offsetTableEntry.w PLCAnimals_DEZ1	; DEZ1
+		offsetTableEntry.w PLCAnimals_DEZ1	; DEZ2
+		offsetTableEntry.w PLCAnimals_DEZ1	; DEZ3
+		offsetTableEntry.w PLCAnimals_DEZ1	; DEZ4
+
 		zonewarning Offs_PLCAnimals,(2*4)
 ; ---------------------------------------------------------------------------
 

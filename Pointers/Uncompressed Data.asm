@@ -11,6 +11,8 @@ ArtUnc_DebugText:	binclude "Objects/HUD/Uncompressed Art/Debug Numbers.bin"
 	even
 ArtUnc_EndSigns:	binclude "Objects/Signpost/Uncompressed Art/End Signs.bin"
 	even
+ArtUnc_SuperSonic_Stars:	binclude	"Objects/Sonic/Uncompressed Art/Super Sonic stars.bin"
+	even
 
 ; ===========================================================================
 ; Animated uncompressed graphics

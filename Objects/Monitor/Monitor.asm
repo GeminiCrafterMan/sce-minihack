@@ -349,19 +349,19 @@ Obj_MonitorContents_Wait:
 
 Monitor_Give_SuperSonic:
 		move.b	#1,(Super_Sonic_Knux_flag).w		; Super
-;		music	bgm_S3Invincible
-;		move.l	#Obj_SuperSonicKnux_Stars,(v_Super_stars).w
-;		move.b	#1,(v_Super_stars+anim).w
+		music	mus_SuperSonic
+		move.l	#Obj_SuperSonicKnux_Stars,(v_Super_stars).w
+		move.b	#1,(v_Super_stars+anim).w
 		bra.s	Monitor_Give_SuperHyper
 ; ---------------------------------------------------------------------------
 
 Monitor_Give_HyperSonic:
 		move.b	#-1,(Super_Sonic_Knux_flag).w		; Hyper
-;		music	bgm_SKInvincible
-;		move.l	#Obj_HyperSonicKnux_Trail,(v_Super_stars).w
-;		move.w	#Player_1,(v_Super_stars+parent).w
-;		move.l	#Obj_HyperSonic_Stars,(v_Invincibility_stars).w
-;		move.b	#1,(v_Invincibility_stars+anim).w
+		music	mus_SuperSonic
+		move.l	#Obj_HyperSonicKnux_Trail,(v_Super_stars).w
+		move.w	#Player_1,(v_Super_stars+parent).w
+		move.l	#Obj_HyperSonic_Stars,(v_Invincibility_stars).w
+		move.b	#1,(v_Invincibility_stars+anim).w
 ;		bra.s	Monitor_Give_SuperHyper				; runs right into it
 ; ---------------------------------------------------------------------------
 

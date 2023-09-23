@@ -76,8 +76,8 @@ Ani_SuperSonic: offsetTable
 		offsetTableEntry.w SonAni_Roll
 		offsetTableEntry.w SonAni_Roll2
 		offsetTableEntry.w SonAni_Push
-		offsetTableEntry.w SonAni_Wait
-		offsetTableEntry.w SonAni_Balance
+		offsetTableEntry.w SupSonAni_Wait
+		offsetTableEntry.w SupSonAni_Balance
 		offsetTableEntry.w SonAni_LookUp
 		offsetTableEntry.w SonAni_Duck
 		offsetTableEntry.w SonAni_Spindash
@@ -99,6 +99,20 @@ Ani_SuperSonic: offsetTable
 		offsetTableEntry.w SonAni_Mach
 		offsetTableEntry.w SonAni_Transform
 		offsetTableEntry.w SonAni_Fall
+
+SupSonAni_Wait:		dc.b    5
+					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
+					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
+					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
+					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
+					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
+					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
+					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
+					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
+					dc.b	frS_Idle4, frS_Idle5, frS_Idle5, frS_Idle6, frS_Idle7, frS_Idle8, afBack, 3
+SupSonAni_Balance:	dc.b	9, frS_Balance11, frS_Balance12, frS_Balance13, frS_Balance21, afEnd
+	even
+
 
 id_Walk:			equ	(SonAni_Walk_ptr-AniSonic)/2
 id_Run:				equ	(SonAni_Run_ptr-AniSonic)/2

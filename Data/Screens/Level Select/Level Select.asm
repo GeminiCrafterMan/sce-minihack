@@ -9,6 +9,7 @@ LevelSelect_VRAM:				= 0
 ; Variables
 LevelSelect_ZoneCount:			= ZoneCount
 LevelSelect_ActDEZCount:			= 4	; DEZ
+LevelSelect_ActTLCount:			= 4	; DEZ
 LevelSelect_MusicTestCount:		= 8
 LevelSelect_SoundTestCount:		= LevelSelect_MusicTestCount+1
 LevelSelect_SampleTestCount:		= LevelSelect_SoundTestCount+1
@@ -147,6 +148,7 @@ LevelSelect_LoadLevel_Return:
 
 LevelSelect_LoadMaxActs:
 		dc.w LevelSelect_ActDEZCount-1	; DEZ
+		dc.w LevelSelect_ActTLCount-1	; TL
 
 		zonewarning LevelSelect_LoadMaxActs,2
 
@@ -341,6 +343,11 @@ LevelSelect_ActTextIndex: offsetTable
 		offsetTableEntry.w LevelSelect_LoadAct2		; DEZ2
 		offsetTableEntry.w LevelSelect_LoadAct3		; DEZ3
 		offsetTableEntry.w LevelSelect_LoadAct4		; DEZ4
+		
+		offsetTableEntry.w LevelSelect_LoadGHZ		; GHZ
+		offsetTableEntry.w LevelSelect_LoadEHZ		; EHZ
+		offsetTableEntry.w LevelSelect_LoadSLZ		; SLZ
+		offsetTableEntry.w LevelSelect_LoadBLANK	; BLANK
 
 		zonewarning LevelSelect_ActTextIndex,(2*4)
 ; --------------------------------------------------------------------------
@@ -353,6 +360,14 @@ LevelSelect_LoadAct3:
 		levselstr "ACT 3"
 LevelSelect_LoadAct4:
 		levselstr "ACT 4"
+LevelSelect_LoadGHZ:
+		levselstr "GREEN HILL  "
+LevelSelect_LoadEHZ:
+		levselstr "EMERALD HILL"
+LevelSelect_LoadSLZ:
+		levselstr "STAR LIGHT  "
+LevelSelect_LoadBLANK:
+		levselstr "BLANK       "
 LevelSelect_MainText:
 		levselstr "SONIC TEST GAME - *** DEBUG MODE ***                            "
 	even
@@ -523,7 +538,7 @@ LevelSelect_MappingOffsets:
 		dc.w planeLocH28(0,26)
 LevelSelect_Text:
 		levselstr "   DEATH EGG          - ACT 1           "
-		levselstr "   UNKNOWN LEVEL      - UNKNOWN         "
+		levselstr "   TEST LEVELS        - GREEN HILL      "
 		levselstr "   UNKNOWN LEVEL      - UNKNOWN         "
 		levselstr "   UNKNOWN LEVEL      - UNKNOWN         "
 		levselstr "   UNKNOWN LEVEL      - UNKNOWN         "

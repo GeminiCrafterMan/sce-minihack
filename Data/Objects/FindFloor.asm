@@ -424,7 +424,7 @@ loc_F282:
 		move.b	(a2,d0.w),d0
 		andi.w	#$FF,d0
 		beq.s	loc_F274
-		lea	(AngleArray).l,a2
+		bsr.w	GetAngleArray
 		move.b	(a2,d0.w),(a4)
 		lsl.w	#4,d0
 		move.w	d3,d1
@@ -443,7 +443,7 @@ loc_F2AA:
 loc_F2BA:
 		andi.w	#$F,d1
 		add.w	d0,d1
-		lea	(HeightMaps).l,a2
+		bsr.w	GetHeightMaps
 		move.b	(a2,d1.w),d0
 		ext.w	d0
 		eor.w	d6,d4
@@ -503,7 +503,7 @@ loc_F32A:
 		move.b	(a2,d0.w),d0
 		andi.w	#$FF,d0
 		beq.s	loc_F31C
-		lea	(AngleArray).l,a2
+		bsr.w	GetAngleArray
 		move.b	(a2,d0.w),(a4)
 		lsl.w	#4,d0
 		move.w	d3,d1
@@ -522,7 +522,7 @@ loc_F352:
 loc_F362:
 		andi.w	#$F,d1
 		add.w	d0,d1
-		lea	(HeightMaps).l,a2
+		bsr.w	GetHeightMaps
 		move.b	(a2,d1.w),d0
 		ext.w	d0
 		eor.w	d6,d4
@@ -571,7 +571,7 @@ loc_F3F4:
 		move.b	(a2,d0.w),d0
 		andi.w	#$FF,d0
 		beq.s	loc_F3EE
-		lea	(AngleArray).l,a2
+		bsr.w	GetAngleArray
 		move.b	(a2,d0.w),(a4)
 		lsl.w	#4,d0
 		move.w	d3,d1
@@ -590,7 +590,7 @@ loc_F41C:
 loc_F42C:
 		andi.w	#$F,d1
 		add.w	d0,d1
-		lea	(HeightMaps).l,a2
+		bsr.w	GetHeightMaps
 		move.b	(a2,d1.w),d0
 		ext.w	d0
 		eor.w	d6,d4
@@ -650,7 +650,7 @@ loc_F4FA:
 		move.b	(a2,d0.w),d0
 		andi.w	#$FF,d0
 		beq.s	loc_F4EC
-		lea	(AngleArray).l,a2
+		bsr.w	GetAngleArray
 		move.b	(a2,d0.w),(a4)
 		lsl.w	#4,d0
 		move.w	d2,d1
@@ -669,7 +669,7 @@ loc_F52A:
 loc_F532:
 		andi.w	#$F,d1
 		add.w	d0,d1
-		lea	(HeightMapsRot).l,a2
+		bsr.w	GetHeightMapsRot
 		move.b	(a2,d1.w),d0
 		ext.w	d0
 		eor.w	d6,d4
@@ -729,7 +729,7 @@ loc_F5A2:
 		move.b	(a2,d0.w),d0
 		andi.w	#$FF,d0
 		beq.s	loc_F594
-		lea	(AngleArray).l,a2
+		bsr.w	GetAngleArray
 		move.b	(a2,d0.w),(a4)
 		lsl.w	#4,d0
 		move.w	d2,d1
@@ -748,7 +748,7 @@ loc_F5D2:
 loc_F5DA:
 		andi.w	#$F,d1
 		add.w	d0,d1
-		lea	(HeightMapsRot).l,a2
+		bsr.w	GetHeightMapsRot
 		move.b	(a2,d1.w),d0
 		ext.w	d0
 		eor.w	d6,d4
@@ -845,7 +845,7 @@ CalcRoomOverHead:
 		cmpi.b	#$40,d0
 		beq.w	CheckLeftCeilingDist
 		cmpi.b	#$80,d0
-		beq.w	Sonic_CheckCeiling
+		beq.w	Player_CheckCeiling
 		cmpi.b	#$C0,d0
 		beq.w	CheckRightCeilingDist
 
@@ -855,14 +855,14 @@ CalcRoomOverHead:
 
 ; =============== S U B R O U T I N E =======================================
 
-Sonic_CheckFloor:
+Player_CheckFloor:
 		move.l	(Primary_collision_addr).w,(Collision_addr).w
 		cmpi.b	#$C,top_solid_bit(a0)
 		beq.s	+
 		move.l	(Secondary_collision_addr).w,(Collision_addr).w
 +		move.b	top_solid_bit(a0),d5
 
-Sonic_CheckFloor2:
+Player_CheckFloor2:
 		move.w	y_pos(a0),d2
 		move.w	x_pos(a0),d3
 		moveq	#0,d0
@@ -891,7 +891,7 @@ Sonic_CheckFloor2:
 		moveq	#0,d6
 		bsr.w	FindFloor
 		move.w	(sp)+,d0
-		move.b	#0,d2
+		clr.b	d2
 
 loc_F7E2:
 		move.b	(Secondary_Angle).w,d3
@@ -927,7 +927,7 @@ CheckFloorDist_Part2:
 		movea.w	#$10,a3
 		moveq	#0,d6
 		bsr.w	FindFloor
-		move.b	#0,d2
+		clr.b	d2
 
 ; d2 what to use as angle if (Primary_Angle).w is odd
 ; returns angle in d3, or value in d2 if angle was odd
@@ -937,6 +937,22 @@ loc_F81A:
 		beq.s	+
 		move.b	d2,d3
 +		rts
+
+; =============== S U B R O U T I N E =======================================
+
+
+sub_F828:
+		move.b	x_radius(a0),d0
+		ext.w	d0
+		add.w	d0,d2
+		lea	(Primary_Angle).w,a4
+		movea.w	#$10,a3
+		clr.w	d6
+		bsr.w	FindFloor
+		clr.b	d2
+		bra.s	loc_F81A
+; End of function sub_F828
+
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -959,7 +975,7 @@ sub_F846:
 		move.b	(Primary_Angle).w,d3
 		btst	#0,d3
 		beq.s	+
-		move.b	#0,d3
+		clr.b	d3
 +		rts
 
 ; =============== S U B R O U T I N E =======================================
@@ -990,7 +1006,7 @@ ChkFloorEdge_Part3:
 		move.b	(Primary_Angle).w,d3
 		btst	#0,d3
 		beq.s	+
-		move.b	#0,d3
+		clr.b	d3
 +		rts
 
 ; =============== S U B R O U T I N E =======================================
@@ -1017,7 +1033,7 @@ SonicOnObjHitFloor2:
 		move.b	(Primary_Angle).w,d3
 		btst	#0,d3
 		beq.s	+
-		move.b	#0,d3
+		clr.b	d3
 +		rts
 
 ; ---------------------------------------------------------------------------
@@ -1048,7 +1064,7 @@ ObjCheckFloorDist2:
 		move.b	(Primary_Angle).w,d3
 		btst	#0,d3
 		beq.s	+
-		move.b	#0,d3
+		clr.b	d3
 +		rts
 
 ; =============== S U B R O U T I N E =======================================
@@ -1148,6 +1164,20 @@ CheckRightWallDist_Part2:
 		bsr.w	FindWall
 		move.b	#-$40,d2
 		bra.w	loc_F81A
+; ---------------------------------------------------------------------------
+
+loc_FAA4:
+		move.b	x_radius(a0),d0
+		ext.w	d0
+		add.w	d0,d3
+		lea	(Primary_Angle).w,a4
+		movea.w	#$10,a3
+		clr.w	d6
+		bsr.w	FindWall
+		move.b	#-$40,d2
+		bra.w	loc_F81A
+; End of function CheckRightWallDist
+
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -1170,7 +1200,7 @@ ObjCheckRightWallDist:
 
 ; =============== S U B R O U T I N E =======================================
 
-Sonic_CheckCeiling:
+Player_CheckCeiling:
 		move.w	y_pos(a0),d2
 		move.w	x_pos(a0),d3
 		moveq	#0,d0
@@ -1258,9 +1288,10 @@ CheckCeilingDist_Part2:
 		move.b	#$80,d2
 		bra.w	loc_F81A
 
-; =============== S U B R O U T I N E =======================================
+; =============== S U B	R O U T	I N E =======================================
 
-sub_FBEE:
+; sub_FBEE:
+CheckCeilingDist_WithRadius:
 		move.b	x_radius(a0),d0
 		ext.w	d0
 		sub.w	d0,d2
@@ -1269,8 +1300,9 @@ sub_FBEE:
 		movea.w	#-$10,a3
 		move.w	#$800,d6
 		bsr.w	FindFloor
-		move.b	#$80,d2
+		move.b	#-$80,d2
 		bra.w	loc_F81A
+; End of function CheckCeilingDist_WithRadius
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -1324,7 +1356,7 @@ ChkFloorEdge_ReverseGravity_Part2:
 		move.b	(Primary_Angle).w,d3
 		btst	#0,d3
 		beq.s	+
-		move.b	#0,d3
+		clr.b	d3
 +		rts
 
 ; =============== S U B R O U T I N E =======================================
@@ -1430,6 +1462,20 @@ CheckLeftWallDist_Part2:
 		bsr.w	FindWall
 		move.b	#$40,d2
 		bra.w	loc_F81A
+; ---------------------------------------------------------------------------
+
+loc_FDC8:					  ; ...
+		move.b	x_radius(a0),d0
+		ext.w	d0
+		sub.w	d0,d3
+		eori.w	#$F,d3
+		lea	(Primary_Angle).w,a4
+		movea.w	#-$10,a3
+		move.w	#$400,d6
+		bsr.w	FindWall
+		move.b	#$40,d2
+		bra.w	loc_F81A
+; End of function CheckLeftWallDist
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -1477,3 +1523,57 @@ ObjCheckLeftWallDist_Part2:
 		beq.s	+
 		move.b	#$40,d3
 +		rts
+
+GetAngleArray:
+		moveq	#0,d1
+		move.w	(Current_zone_and_act).w,d1
+		ror.b	#2,d1
+		lsr.w	#4,d1
+		lea	(ZoneAngleArrays).l,a2
+		movea.l	(a2,d1.w),a2
+		rts
+	ZoneAngleArrays:
+	rept 4
+		dc.l	S1AngleArray	; DEZ
+	endr
+		dc.l	S1AngleArray	; GHZ
+		dc.l	S2AngleArray	; EHZ
+		dc.l	S1AngleArray	; EHZ
+		dc.l	S1AngleArray	; EHZ
+	zonewarning ZoneAngleArrays,(4*4)
+
+GetHeightMaps:
+		moveq	#0,d0
+		move.w	(Current_zone_and_act).w,d0
+		ror.b	#2,d0
+		lsr.w	#4,d0
+		lea	(ZoneHeightMaps).l,a2
+		movea.l	(a2,d0.w),a2
+		rts
+	ZoneHeightMaps:
+	rept 4
+		dc.l	S1HeightMaps	; DEZ
+	endr
+		dc.l	S1HeightMaps	; GHZ
+		dc.l	S2HeightMaps	; EHZ
+		dc.l	S1HeightMaps	; EHZ
+		dc.l	S1HeightMaps	; EHZ
+	zonewarning ZoneHeightMaps,(4*4)
+
+GetHeightMapsRot:
+		moveq	#0,d0
+		move.w	(Current_zone_and_act).w,d0
+		ror.b	#2,d0
+		lsr.w	#4,d0
+		lea	(ZoneHeightMapsRot).l,a2
+		movea.l	(a2,d0.w),a2
+		rts
+	ZoneHeightMapsRot:
+	rept 4
+		dc.l	S1HeightMapsRot	; DEZ
+	endr
+		dc.l	S1HeightMapsRot	; GHZ
+		dc.l	S2HeightMapsRot	; EHZ
+		dc.l	S1HeightMapsRot	; EHZ
+		dc.l	S1HeightMapsRot	; EHZ
+	zonewarning ZoneHeightMapsRot,(4*4)

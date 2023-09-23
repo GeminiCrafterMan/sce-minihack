@@ -28,7 +28,7 @@ SuperHyper_PalCycle:
 		; run frame timer
 		subq.b	#1,(Palette_timer).w
 		bpl.w	locret_37EC
-		move.b	#1,(Palette_timer).w
+		move.b	#3,(Palette_timer).w
 
 SuperHyper_PalCycle_FadeIn:
 		; increment palette frame and update Sonic's palette
@@ -87,7 +87,7 @@ SuperHyper_PalCycle_SuperSonic:
 		move.w	#$30,(Palette_frame).w	; reset frame counter (Super Sonic's normal palette cycle starts at $24. Everything before that is for the palette fade)
 
 loc_3898:
-		bra.w	SuperHyper_PalCycle_SonicApply
+		bra.s	SuperHyper_PalCycle_Apply
 ; ---------------------------------------------------------------------------
 
 SuperHyper_PalCycle_HyperSonic:
@@ -102,7 +102,7 @@ SuperHyper_PalCycle_HyperSonic:
 		addq.w	#8,(Palette_frame).w			; next frame
 		cmpi.w	#$60,(Palette_frame).w			; is it the last frame?
 		blo.s	SuperHyper_PalCycle_Apply	; if not, branch
-		move.w	#0,(Palette_frame).w			; reset frame counter
+		move.w	#$20,(Palette_frame).w			; reset frame counter
 
 SuperHyper_PalCycle_Apply:
 		lea	(Normal_palette+$4).w,a1
@@ -115,18 +115,8 @@ PalCycle_SuperSonic:
 		even
 
 PalCycle_HyperSonic:
-		dc.w $EEC,$ECA,$EA8
-		dc.w $EEE,$EEE,$EEE
-		dc.w $CEC,$AEA,$2E0
-		dc.w $EEE,$EEE,$EEE
-		dc.w $AEC,$4EC,$0CC
-		dc.w $EEE,$EEE,$EEE
-		dc.w $CEE,$8EE,$4CE
-		dc.w $EEE,$EEE,$EEE
-		dc.w $EEE,$CCE,$AAE
-		dc.w $EEE,$EEE,$EEE
-		dc.w $EEE,$ECE,$CAC
-		dc.w $EEE,$EEE,$EEE
+		binclude	"Objects/Sonic/Palettes/Hyper Sonic.bin"
+		even
 
 ; Re-add Tails and Knuckles's Super/Hyper cycles here if you decide to add them...
 

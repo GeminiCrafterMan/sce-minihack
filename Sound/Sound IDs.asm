@@ -12,6 +12,8 @@ mus__First = idstart
 mus_IStD =			SMPS_id(ptr_mus_istd)
 mus_DItC =			SMPS_id(ptr_mus_ditc)
 mus_Unti =			SMPS_id(ptr_mus_unti)
+mus_GHZ =			SMPS_id(ptr_mus_ghz)
+mus_EHZ =			SMPS_id(ptr_mus_ehz)
 
 ; Bosses
 mus_MidBoss =		SMPS_id(ptr_mus_boss)
@@ -19,6 +21,7 @@ mus_ZoneBoss =		SMPS_id(ptr_mus_boss2)
 
 ; Misc
 mus_Invincible =	SMPS_id(ptr_mus_invin)
+mus_SuperSonic =	SMPS_id(ptr_mus_super)
 mus_GotThrough =	SMPS_id(ptr_mus_through)
 mus_Drowning =		SMPS_id(ptr_mus_drowning)
 

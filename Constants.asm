@@ -114,8 +114,14 @@ id_SonicDrown =					id(ptr_Sonic_Drown)		; C
 ; Levels
 ; ---------------------------------------------------------------------------
 
-z_DEZ:							equ 0
-z_Null:							equ $FF
+; zone IDs
+ZoneIDs:
+	phase 0 ; Reset ds.b value to 0
+z_DEZ:		ds.b 1
+z_Last =	*
+z_TL:		ds.b 1
+	dephase
+	zonewarning	ZoneIDs,1
 
 ; ---------------------------------------------------------------------------
 ; Buttons bit numbers

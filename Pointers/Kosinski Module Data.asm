@@ -8,6 +8,8 @@ ArtKosM_Hud:					binclude "Objects/HUD/KosinskiM Art/HUD.bin"
 	even
 ArtKosM_Monitors:				binclude "Objects/Monitor/KosinskiM Art/Monitors.bin"
 	even
+ArtKosM_HyperSonicStars:		binclude "Objects/Sonic/KosinskiM Art/Hyper Sonic Stars.bin"
+	even
 ArtKosM_SpikesSprings:			binclude "Objects/Spikes/KosinskiM Art/SpikesSprings.bin"
 	even
 ArtKosM_RobotnikShip:			binclude "Objects/Robotnik/KosinskiM Art/Robotnik Ship.bin"

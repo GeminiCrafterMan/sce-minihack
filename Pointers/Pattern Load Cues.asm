@@ -4,14 +4,19 @@
 
 Offs_PLC: offsetTable
 
+	rept 4
 		offsetTableEntry.w PLC1_DEZ1_Misc
 		offsetTableEntry.w PLC2_DEZ1_Enemy
-		offsetTableEntry.w PLC1_DEZ2_Misc
-		offsetTableEntry.w PLC2_DEZ2_Enemy
-		offsetTableEntry.w PLC1_DEZ3_Misc
-		offsetTableEntry.w PLC2_DEZ3_Enemy
-		offsetTableEntry.w PLC1_DEZ4_Misc
-		offsetTableEntry.w PLC2_DEZ4_Enemy
+	endr
+
+		offsetTableEntry.w PLC1_GHZ_Misc
+		offsetTableEntry.w PLC2_GHZ_Enemy
+		offsetTableEntry.w PLC1_EHZ_Misc
+		offsetTableEntry.w PLC2_EHZ_Enemy
+		offsetTableEntry.w PLC1_DEZ1_Misc
+		offsetTableEntry.w PLC2_DEZ1_Enemy
+		offsetTableEntry.w PLC1_DEZ1_Misc
+		offsetTableEntry.w PLC2_DEZ1_Enemy
 
 		zonewarning Offs_PLC,(4*4)
 
@@ -52,46 +57,31 @@ PLC2_DEZ1_Enemy: plrlistheader
 PLC2_DEZ1_Enemy_end
 
 ; ===========================================================================
-; Pattern load cues - Death Egg (Misc)
+; Pattern load cues - Green Hill (Misc)
 ; ===========================================================================
 
-PLC1_DEZ2_Misc: plrlistheader
-PLC1_DEZ2_Misc_end
+PLC1_GHZ_Misc: plrlistheader
+PLC1_GHZ_Misc_end
 
 ; ===========================================================================
-; Pattern load cues - Death Egg (Enemy)
+; Pattern load cues - Green Hill (Enemy)
 ; ===========================================================================
 
-PLC2_DEZ2_Enemy: plrlistheader
+PLC2_GHZ_Enemy: plrlistheader
 		plreq $500, ArtKosM_Spikebonker					; Spikebonker badnik
-PLC2_DEZ2_Enemy_end
+PLC2_GHZ_Enemy_end
 
 ; ===========================================================================
-; Pattern load cues - Death Egg (Misc)
+; Pattern load cues - Emerald Hill (Misc)
 ; ===========================================================================
 
-PLC1_DEZ3_Misc: plrlistheader
-PLC1_DEZ3_Misc_end
+PLC1_EHZ_Misc: plrlistheader
+PLC1_EHZ_Misc_end
 
 ; ===========================================================================
-; Pattern load cues - Death Egg (Enemy)
+; Pattern load cues - Emerald Hill (Enemy)
 ; ===========================================================================
 
-PLC2_DEZ3_Enemy: plrlistheader
+PLC2_EHZ_Enemy: plrlistheader
 		plreq $500, ArtKosM_Spikebonker					; Spikebonker badnik
-PLC2_DEZ3_Enemy_end
-
-; ===========================================================================
-; Pattern load cues - Death Egg (Misc)
-; ===========================================================================
-
-PLC1_DEZ4_Misc: plrlistheader
-PLC1_DEZ4_Misc_end
-
-; ===========================================================================
-; Pattern load cues - Death Egg (Enemy)
-; ===========================================================================
-
-PLC2_DEZ4_Enemy: plrlistheader
-		plreq $500, ArtKosM_Spikebonker					; Spikebonker badnik
-PLC2_DEZ4_Enemy_end
+PLC2_EHZ_Enemy_end

@@ -1451,14 +1451,15 @@ Sonic_Transform:
 		blo.s	.super					; if not, turn Super
 
 		move.b	#-1,(Super_Sonic_Knux_flag).w		; set flag to Hyper Sonic
-;		move.l	#Obj_HyperSonic_Stars,(Invincibility_stars).w	; load Hyper Stars object
-;		move.l	#Obj_HyperSonicKnux_Trail,(Super_stars).w	; load After-Images object
+		move.l	#Obj_HyperSonic_Stars,(v_Invincibility_stars).w	; load Hyper Stars object
+		move.l	#Obj_HyperSonicKnux_Trail,(v_Super_stars).w	; load After-Images object
 		bra.s	.continued
 ; ---------------------------------------------------------------------------
 
 	.super:
 		move.b	#1,(Super_Sonic_Knux_flag).w		; set flag to Super Sonic
-;		move.l	#Obj_SuperSonicKnux_Stars,(Super_stars).w	; load Super Stars object
+		move.l	#Obj_SuperSonicKnux_Stars,(v_Super_stars).w	; load Super Stars object
+		move.b	#1,(v_Super_stars+anim).w
 
 	.continued:
 		move.w	#$A00,Sonic_Knux_top_speed-Sonic_Knux_top_speed(a4)
@@ -1466,21 +1467,18 @@ Sonic_Transform:
 		move.w	#$100,Sonic_Knux_deceleration-Sonic_Knux_top_speed(a4)
 		move.b	#0,invincibility_timer(a0)
 		bset	#Status_Invincible,status_secondary(a0)
-		moveq	#signextendB(sfx_SuperTransform),d0
-		jsr	(Play_SFX).l
-;		moveq	#signextendB(mus_Invincibility),d0		; play invincibility theme
-;		jmp	(Play_Music).l
+		sfx		sfx_SuperTransform
+		music	mus_SuperSonic
 		rts
 ; ---------------------------------------------------------------------------
 
 Sonic_HyperDash:
-;		bsr.w	HyperAttackTouchResponse
+		bsr.w	HyperAttackTouchResponse
 		move.w	#$2000,(H_scroll_frame_offset).w
 		bsr.w	Reset_Player_Position_Array
 		move.b	#1,double_jump_flag(a0)
-;		move.b	#1,(Invincibility_stars+anim).w	; This causes the screen flash, and sparks to come out of Sonic
-		moveq	#signextendB(sfx_Dash),d0
-		jsr	(Play_SFX).l
+		move.b	#1,(v_Invincibility_stars+anim).w	; This causes the screen flash, and sparks to come out of Sonic
+		sfx		sfx_Dash
 		move.b	(Ctrl_1_logical).w,d0
 		andi.w	#button_up_mask|button_down_mask|button_left_mask|button_right_mask,d0	; Get D-pad input
 		beq.s	.noInput
@@ -2013,8 +2011,8 @@ locret_11FD4:
 
 sub_11FD6:
 		tst.b	(Reverse_gravity_flag).w
-		beq.w	Sonic_CheckFloor
-		bsr.w	Sonic_CheckCeiling
+		beq.w	Player_CheckFloor
+		bsr.w	Player_CheckCeiling
 		addi.b	#$40,d3
 		neg.b	d3
 		subi.b	#$40,d3
@@ -2024,8 +2022,8 @@ sub_11FD6:
 
 sub_11FEE:
 		tst.b	(Reverse_gravity_flag).w
-		beq.w	Sonic_CheckCeiling
-		bsr.w	Sonic_CheckFloor
+		beq.w	Player_CheckCeiling
+		bsr.w	Player_CheckFloor
 		addi.b	#$40,d3
 		neg.b	d3
 		subi.b	#$40,d3
@@ -2993,12 +2991,17 @@ PlayerArtToD6:
 ; ---------------------------------------------------------------------------
 		include "Objects/Sonic/Object Data/Anim - Sonic.asm"
 
+	even
 ArtUnc_Sonic:		binclude "Objects/Sonic/Uncompressed Art/Sonic.bin"
 	even
 Map_Sonic:			binclude "Objects/Sonic/Object Data/Map - Sonic.bin"
+	even
 PLC_Sonic:			binclude "Objects/Sonic/Object Data/PLC - Sonic.bin"
+	even
 ; these are identical and use the same files right now
 ArtUnc_SuperSonic:	binclude "Objects/Sonic/Uncompressed Art/Super Sonic.bin"
 	even
 Map_SuperSonic:		binclude "Objects/Sonic/Object Data/Map - Super Sonic.bin"
+	even
 PLC_SuperSonic:		binclude "Objects/Sonic/Object Data/PLC - Super Sonic.bin"
+	even
