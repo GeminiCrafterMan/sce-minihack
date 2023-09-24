@@ -293,7 +293,11 @@ Monitor_Give_Rings:
 ; ---------------------------------------------------------------------------
 
 Monitor_Give_Super_Sneakers:
+		tst.b	(Super_Sonic_Knux_flag).w
+		bne.s	Monitor_Give_Rings
 		bset	#Status_SpeedShoes,status_secondary(a1)
+		move.l	#Obj_HyperSonicKnux_Trail,(v_Super_stars).w
+		move.w	#Player_1,(v_Super_stars+parent).w
 		move.b	#150,speed_shoes_timer(a1)
 		move.w	#$C00,(Sonic_Knux_top_speed).w
 		move.w	#$18,(Sonic_Knux_acceleration).w
@@ -326,6 +330,8 @@ Monitor_Give_Bubble_Shield:
 ; ---------------------------------------------------------------------------
 
 Monitor_Give_Invincibility:
+		tst.b	(Super_Sonic_Knux_flag).w
+		bne.w	Monitor_Give_Rings
 		bset	#Status_Invincible,status_secondary(a1)
 		move.b	#150,invincibility_timer(a1)
 		tst.b	(Level_end_flag).w

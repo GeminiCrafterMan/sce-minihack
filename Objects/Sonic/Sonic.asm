@@ -21,7 +21,7 @@ Obj_Sonic:
 		beq.s	+
 		clr.w	(Debug_placement_mode).w	; Leave debug mode
 +		addq.b	#1,mapping_frame(a0)		; Next frame
-		cmpi.b	#$DA,mapping_frame(a0)	; Have we reached the end of Sonic's frames?
+		cmpi.b	#frS_Last,mapping_frame(a0)	; Have we reached the end of Sonic's frames?
 		blo.s		+
 		clr.b	mapping_frame(a0)	; If so, reset to Sonic's first frame
 +		bsr.w	Player_Load_PLC
@@ -59,6 +59,8 @@ Sonic_Init:	; Routine 0
 		move.w	#bytes_to_word(48/2,48/2),height_pixels(a0)		; set height and width
 		move.b	#4,render_flags(a0)
 		clr.b	character_id(a0)
+		clr.l	(Super_palette_status).w
+		clr.l	(Palette_frame).w
 		move.w	#$600,Sonic_Knux_top_speed-Sonic_Knux_top_speed(a4)
 		move.w	#$C,Sonic_Knux_acceleration-Sonic_Knux_top_speed(a4)
 		move.w	#$80,Sonic_Knux_deceleration-Sonic_Knux_top_speed(a4)

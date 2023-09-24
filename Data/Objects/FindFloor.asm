@@ -1538,8 +1538,8 @@ GetAngleArray:
 	endr
 		dc.l	S1AngleArray	; GHZ
 		dc.l	S2AngleArray	; EHZ
-		dc.l	S1AngleArray	; EHZ
-		dc.l	S1AngleArray	; EHZ
+		dc.l	S1AngleArray	; SLZ
+		dc.l	S1AngleArray	; BLANK
 	zonewarning ZoneAngleArrays,(4*4)
 
 GetHeightMaps:
@@ -1556,8 +1556,8 @@ GetHeightMaps:
 	endr
 		dc.l	S1HeightMaps	; GHZ
 		dc.l	S2HeightMaps	; EHZ
-		dc.l	S1HeightMaps	; EHZ
-		dc.l	S1HeightMaps	; EHZ
+		dc.l	S1HeightMaps	; SLZ
+		dc.l	S1HeightMaps	; BLANK
 	zonewarning ZoneHeightMaps,(4*4)
 
 GetHeightMapsRot:
@@ -1574,6 +1574,6 @@ GetHeightMapsRot:
 	endr
 		dc.l	S1HeightMapsRot	; GHZ
 		dc.l	S2HeightMapsRot	; EHZ
-		dc.l	S1HeightMapsRot	; EHZ
-		dc.l	S1HeightMapsRot	; EHZ
+		dc.l	S1HeightMapsRot	; SLZ
+		dc.l	S1HeightMapsRot	; BLANK
 	zonewarning ZoneHeightMapsRot,(4*4)
