@@ -22,6 +22,8 @@ ptr_mus_drowning:	SMPS_MUSIC_METADATA	Music_Drowning, s3TempotoS1($02), SMPS_MUS
 ptr_mus_inter:		SMPS_MUSIC_METADATA	Music_Inter, 8, 0	; Intermission from Doom by Bobby Prince from 'DOOM' (1993)
 ptr_mus_broken:		SMPS_MUSIC_METADATA Music_Broken, 8, 0	; Broken Moon by U2 Akiyama from 'Touhou Hisouten'
 
+ptr_mus_you:		SMPS_MUSIC_METADATA Music_You, 8, 0
+
 ptr_musend
 
 ; ---------------------------------------------------------------------------
@@ -53,4 +55,6 @@ Music_Drowning:		include "Sound/Music/Mus - Drowning.asm"
 Music_Inter:		include	"Sound/Music/Mus - Intermission from Doom.asm"
 	even
 Music_Broken:		include	"Sound/Music/Mus - Broken Moon.asm"
+	even
+Music_You:			include	"Sound/Music/you.asm"
 	even
