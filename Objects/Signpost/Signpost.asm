@@ -271,13 +271,12 @@ Child6_EndSignScore:
 PLCPtr_EndSigns:
 		dc.l ArtUnc_EndSigns>>1, PLC_EndSigns
 AniRaw_EndSigns:
-		dc.b	1,   0
-		dc.b	4,   5
-		dc.b	6,   1
-		dc.b	4,   5
-		dc.b	6,   3
-		dc.b	4,   5
-		dc.b	6, arfEnd
+		dc.b	1		; speed
+		dc.b	3,	4
+		dc.b	5,	6
+		dc.b	0,	1
+		dc.b	5,	2
+		dc.b	arfEnd	; end
 AniRaw_SignpostSparkle:
 		dc.b	1,   1
 		dc.b	2,   3
@@ -323,7 +322,7 @@ Obj_EndSignTouch:
 		bne.s	.reset
 		lea	EndSign_Range(pc),a1
 		jsr	Check_PlayerInRange;(pc)
-		move.w	#$80,wait(a0) ;set animation timer
+		move.w	#$86,wait(a0) ;set animation timer
 		tst.l	d0
 		beq.s	.notouch		; If neither player is in range, don't do anything
 		tst.w	d0

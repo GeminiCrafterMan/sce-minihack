@@ -22,7 +22,7 @@ ArtKosM_EnemyPts:				binclude "Objects/Explosion/KosinskiM Art/Enemy points.bin"
 	even
 ArtKosM_StarPost:				binclude "Objects/StarPost/KosinskiM Art/Starpost.bin"
 	even
-ArtKosM_GrayButton:				binclude "Objects/Button/KosinskiM Art/Gray Button.bin"
+ArtKosM_Button:					binclude "Objects/Button/KosinskiM Art/Button.bin"
 	even
 ArtKosM_DiagonalSpring:			binclude "Objects/Spring/KosinskiM Art/Diagonal Spring.bin"
 	even

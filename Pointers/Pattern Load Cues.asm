@@ -36,7 +36,7 @@ PLC_Main_end
 ; ===========================================================================
 
 PLC_Main2: plrlistheader
-		plreq $47E, ArtKosM_GrayButton					; Button
+		plreq $47E, ArtKosM_Button							; Button
 		plreq ArtTile_SpikesSprings, ArtKosM_SpikesSprings	; Spikes and normal spring
 		plreq ArtTile_Monitors, ArtKosM_Monitors			; Monitors
 		plreq $5A0, ArtKosM_Explosion						; Explosion
@@ -55,7 +55,7 @@ PLC1_DEZ1_Misc_end
 
 PLC2_DEZ1_Enemy: plrlistheader
 		plreq $400, ArtKosM_BataPyon					; Bata-pyon badnik
-		plreq $480,	ArtKosM_BallHog						; Ball Hog badnik
+		plreq $440,	ArtKosM_BallHog						; Ball Hog badnik
 		plreq $500, ArtKosM_Spikebonker					; Spikebonker badnik
 PLC2_DEZ1_Enemy_end
 

@@ -131,4 +131,5 @@ Obj_EnemyScore:
 ; ---------------------------------------------------------------------------
 
 		include "Objects/Explosion/Object Data/Map - Explosion.asm"
-		include	"Objects/Explosion/Object Data/Map - Enemy Points.asm"
+Map_EnemyScore:		binclude	"Objects/Explosion/Object Data/Map - Enemy Points.bin"
+	even

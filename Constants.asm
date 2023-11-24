@@ -161,7 +161,7 @@ btnUp:		equ %00000001		; Up	($01)
 btnLR:		equ %00001100		; Left or Right ($0C)
 btnDir:		equ %00001111		; Any direction ($0F)
 btnABCS:	equ %11110000		; A, B, C or Start ($F0)
-btnStart:		equ %10000000		; Start button	($80)
+btnStart:	equ %10000000		; Start button	($80)
 btnABC:		equ %01110000		; A, B or C ($70)
 btnAC:		equ %01100000		; A or C ($60)
 btnAB:		equ %01010000		; A or B ($50)
@@ -214,7 +214,7 @@ previous_frame =		$48	; byte
 ; Conventions followed by most objects:
 ; ---------------------------------------------------------------------------
 
-routine =		 	 	    	    5 ; byte
+routine =		 	    5 ; byte
 x_vel =					$18 ; word
 y_vel =					$1A ; word
 y_radius =				$1E ; byte ; collision height / 2
@@ -225,7 +225,7 @@ prev_anim =				$21 ; byte ; when this isn't equal to anim the animation restarts
 anim_frame =			$23 ; byte
 anim_frame_timer =		$24 ; byte
 angle =					$26 ; byte ; angle about axis into plane of the screen (00 = vertical, 360 degrees = 256)
-status =					$2A ; bitfield ; refer to SCHG for details
+status =				$2A ; bitfield ; refer to SCHG for details
 
 ; ---------------------------------------------------------------------------
 ; Conventions followed by many objects but not Sonic/Tails/Knuckles:
