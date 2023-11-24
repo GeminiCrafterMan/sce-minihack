@@ -30,7 +30,10 @@
 ; Levels objects data
 ; ===========================================================================
 
-		include "Objects/Spikebonker/Spikebonker.asm"
+		include	"Objects/Badniks/Generic Badnik Slots.asm"
+		include "Objects/Badniks/Spikebonker/Spikebonker.asm"
+		include "Objects/Badniks/Bata-pyon/Bata-pyon.asm"
+		include "Objects/Badniks/Ball Hog/Ball Hog.asm"
 
 ; ===========================================================================
 ; Bosses objects data

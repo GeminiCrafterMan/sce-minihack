@@ -42,20 +42,19 @@ SonAni_Wait:		dc.b    5, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, 
 					dc.b  frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1
 					dc.b  frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle3, frS_Idle4, frS_Idle4, frS_Idle5, frS_Idle5, frS_Idle4, frS_Idle4
 					dc.b  frS_Idle5, frS_Idle5, frS_Idle4, frS_Idle4, frS_Idle5, frS_Idle5, frS_Idle4, frS_Idle4, frS_Idle5, frS_Idle5, frS_Idle4, frS_Idle4, frS_Idle5, frS_Idle5, frS_Idle4, frS_Idle4, frS_Idle5, frS_Idle5, frS_Idle4, frS_Idle4
-					dc.b  frS_Idle5, frS_Idle5, frS_Idle4, frS_Idle4, frS_Idle5, frS_Idle5, frS_Idle6, frS_Idle6, frS_Idle6, frS_Idle6, frS_Idle6, frS_Idle6, frS_Idle7, frS_Idle7, frS_Idle7, frS_Idle7, frS_Idle7, frS_Idle7, frS_Idle8, frS_Idle9
-					dc.b  frS_Idle9, frS_Idle9, frS_Idle9, frS_Idle9, frS_Idle9, frS_Idle8, frS_Idle8, afBack, $35
-SonAni_Balance:		dc.b	7, frS_Balance21,	frS_Balance22, afEnd
+					dc.b  frS_Idle5, frS_Idle5, frS_Idle4, frS_Idle4, frS_Idle5, frS_Idle5, frS_Idle6, frS_Idle6, frS_Idle6, frS_Idle6, frS_Idle6, frS_Idle6, frS_Idle6, frS_Idle6, frS_Idle6, frS_Idle6, afBack, $2A
+SonAni_Balance:		dc.b	12, frS_Balance21,	frS_Balance22, afEnd
 SonAni_LookUp:		dc.b	5, frS_LookUp1,	frS_LookUp2, afBack,   1
 SonAni_Duck:		dc.b	5, frS_Duck1,	frS_Duck2, afBack,   1
 SonAni_Spindash:	dc.b	0, frS_Spindash1,	frS_Spindash2, frS_Spindash1, frS_Spindash3, frS_Spindash1, frS_Spindash4, frS_Spindash1, frS_Spindash5, frS_Spindash1,	frS_Spindash6, afEnd
 SonAni_MGZHang:		dc.b   $F, frS_MGZHang, afEnd
-SonAni_Balance2:	dc.b	5, frS_Balance11,	frS_Balance12, afEnd
+SonAni_Balance2:	dc.b	12, frS_Balance11,	frS_Balance12, afEnd
 SonAni_Stop:		dc.b	2, frS_Skid1,	frS_Skid2, frS_Skid3, frS_Skid4, afBack, 2
 SonAni_Float1:		dc.b	7, frS_Float1, afEnd
 SonAni_Float2:		dc.b	7, frS_Float1,	frS_Float2, frS_Float3, frS_Float4, frS_Float5, frS_Float6, afEnd
 SonAni_Spring:		dc.b  $20, frS_Spring, afEnd
 SonAni_LZHang:		dc.b	1, frS_LZHang1,	frS_LZHang2, afEnd
-SonAni_Victory:		dc.b	7, frS_Victory1,	frS_Victory3, frS_Victory3, frS_Victory3, frS_Victory3, frS_Victory3, frS_Victory3, frS_Victory2, frS_Victory3,	afBack,	 2
+SonAni_Victory:		dc.b	7, frS_Victory1, frS_Victory2, frS_Victory3, frS_Victory4, frS_Victory5, frS_Victory6, frS_Victory7, afBack, 2
 SonAni_Hang:		dc.b  $13, frS_Hang1,	frS_Hang2,	afEnd
 SonAni_GetAir:		dc.b   $B, frS_GetAir,	frS_GetAir,   frS_Walk13,   frS_Walk14, afChange,   id_Walk
 SonAni_Burnt:		dc.b  $20, frS_Burnt, afEnd
@@ -76,8 +75,8 @@ Ani_SuperSonic: offsetTable
 		offsetTableEntry.w SonAni_Roll
 		offsetTableEntry.w SonAni_Roll2
 		offsetTableEntry.w SonAni_Push
-		offsetTableEntry.w SupSonAni_Wait
-		offsetTableEntry.w SupSonAni_Balance
+		offsetTableEntry.w SonAni_Wait
+		offsetTableEntry.w SonAni_Balance
 		offsetTableEntry.w SonAni_LookUp
 		offsetTableEntry.w SonAni_Duck
 		offsetTableEntry.w SonAni_Spindash
@@ -100,16 +99,7 @@ Ani_SuperSonic: offsetTable
 		offsetTableEntry.w SonAni_Transform
 		offsetTableEntry.w SonAni_Fall
 
-SupSonAni_Wait:		dc.b    5
-					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
-					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
-					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
-					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
-					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
-					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
-					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
-					dc.b	frS_Idle1, frS_Idle2, frS_Idle3, frS_Idle1, frS_Idle2, frS_Idle3
-					dc.b	frS_Idle4, frS_Idle5, frS_Idle5, frS_Idle6, frS_Idle7, frS_Idle8, afBack, 3
+SupSonAni_Wait:		dc.b    5, frS_Idle1, frS_Idle2, frS_Idle3, afEnd
 SupSonAni_Balance:	dc.b	9, frS_Balance11, frS_Balance12, frS_Balance21, frS_Balance22, afEnd
 	even
 
@@ -169,6 +159,9 @@ frS_Turntable4:		ds.b 1
 frS_Turntable5:		ds.b 1
 frS_Turntable6:		ds.b 1
 frS_Turntable7:		ds.b 1
+frS_Flip1:			ds.b 1
+frS_FlipX:			ds.b 10
+frS_Flip12:			ds.b 1
 frS_RopeSwing1:		ds.b 1
 frS_RopeSwing2:		ds.b 1
 frS_RopeSwing3:		ds.b 1
@@ -216,12 +209,13 @@ frS_Drown:			ds.b 1
 frS_LZHang1:		ds.b 1
 frS_LZHang2:		ds.b 1
 frS_GetAir:			ds.b 1
-frS_Idle6:			ds.b 1
-frS_Idle7:			ds.b 1
-frS_Idle8:			ds.b 1
 frS_Victory1:		ds.b 1
 frS_Victory2:		ds.b 1
 frS_Victory3:		ds.b 1
+frS_Victory4:		ds.b 1
+frS_Victory5:		ds.b 1
+frS_Victory6:		ds.b 1
+frS_Victory7:		ds.b 1
 frS_LZHangV1:		ds.b 1
 frS_LZHangV2:		ds.b 1
 frS_Push1:			ds.b 1
@@ -233,6 +227,7 @@ frS_Idle2:			ds.b 1
 frS_Idle3:			ds.b 1
 frS_Idle4:			ds.b 1
 frS_Idle5:			ds.b 1
+frS_Idle6:			ds.b 1
 frS_LookUp1:		ds.b 1
 frS_LookUp2:		ds.b 1
 frS_Float1:			ds.b 1
@@ -248,7 +243,6 @@ frS_Transform4:		ds.b 1
 frS_Transform5:		ds.b 1
 frS_Fall1:			ds.b 1
 frS_Fall2:			ds.b 1
-frS_Idle9:			ds.b 1
 frS_Mach11:			ds.b 1
 frS_Mach12:			ds.b 1
 frS_Mach13:			ds.b 1

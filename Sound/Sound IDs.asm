@@ -68,6 +68,7 @@ sfx_Switch =			SMPS_id(ptr_snd5C)
 sfx_Register =			SMPS_id(ptr_snd5D)
 sfx_SignpostFall =		SMPS_id(ptr_snd5E)
 sfx_SuperTransform =	SMPS_id(ptr_snd5F)
+sfx_BatapyonSpring =	SMPS_id(ptr_snd60)
 
 sfx__Last =			SMPS_id(ptr_sndend)-1
 

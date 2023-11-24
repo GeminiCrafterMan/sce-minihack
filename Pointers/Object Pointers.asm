@@ -17,12 +17,12 @@ Obj_Index:
 		dc.l DeleteObject						; $0B
 		dc.l DeleteObject						; $0C
 		dc.l Obj_Signpost						; $0D
-		dc.l DeleteObject						; $0E
-		dc.l DeleteObject						; $0F
-		dc.l DeleteObject						; $10
-		dc.l DeleteObject						; $11
-		dc.l DeleteObject						; $12
-		dc.l DeleteObject						; $13
+		dc.l Obj_BadnikSlot1					; $0E
+		dc.l Obj_BadnikSlot2					; $0F
+		dc.l Obj_BadnikSlot3					; $10
+		dc.l Obj_BadnikSlot4					; $11
+		dc.l Obj_BadnikSlot5					; $12
+		dc.l Obj_BadnikSlot6					; $13
 		dc.l DeleteObject						; $14
 		dc.l DeleteObject						; $15
 		dc.l DeleteObject						; $16

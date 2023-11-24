@@ -25,7 +25,8 @@ Offs_PLC: offsetTable
 ; ===========================================================================
 
 PLC_Main: plrlistheader
-		plreq ArtTile_StarPost, ArtKosM_EnemyPtsStarPost	; StarPost
+		plreq ArtTile_EnemyScore, ArtKosM_EnemyPts		; Enemy points
+		plreq ArtTile_StarPost, ArtKosM_StarPost		; StarPost
 		plreq ArtTile_Ring_Sparks, ArtKosM_Ring_Sparks	; Rings
 		plreq ArtTile_HUD, ArtKosM_Hud					; HUD
 PLC_Main_end
@@ -53,6 +54,8 @@ PLC1_DEZ1_Misc_end
 ; ===========================================================================
 
 PLC2_DEZ1_Enemy: plrlistheader
+		plreq $400, ArtKosM_BataPyon					; Bata-pyon badnik
+		plreq $480,	ArtKosM_BallHog						; Ball Hog badnik
 		plreq $500, ArtKosM_Spikebonker					; Spikebonker badnik
 PLC2_DEZ1_Enemy_end
 

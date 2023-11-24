@@ -18,7 +18,9 @@ ArtKosM_BossExplosion:			binclude "Objects/Explosion/KosinskiM Art/Boss Explosio
 	even
 ArtKosM_Explosion:				binclude "Objects/Explosion/KosinskiM Art/Explosion.bin"
 	even
-ArtKosM_EnemyPtsStarPost:		binclude "Objects/StarPost/KosinskiM Art/Enemy points.bin"
+ArtKosM_EnemyPts:				binclude "Objects/Explosion/KosinskiM Art/Enemy points.bin"
+	even
+ArtKosM_StarPost:				binclude "Objects/StarPost/KosinskiM Art/Starpost.bin"
 	even
 ArtKosM_GrayButton:				binclude "Objects/Button/KosinskiM Art/Gray Button.bin"
 	even
@@ -58,12 +60,6 @@ ArtKosM_TitleCardNum4:			binclude "Objects/Title Card/KosinskiM Art/Title Card N
 	even
 ArtKosM_TitleCardRedAct:			binclude "Objects/Title Card/KosinskiM Art/Title Card Red ACT.bin"
 	even
-ArtKosM_StarPostStars1:			binclude "Objects/StarPost/KosinskiM Art/StarPost Stars 1.bin"
-	even
-ArtKosM_StarPostStars2:			binclude "Objects/StarPost/KosinskiM Art/StarPost Stars 2.bin"
-	even
-ArtKosM_StarPostStars3:			binclude "Objects/StarPost/KosinskiM Art/StarPost Stars 3.bin"
-	even
 ArtKosM_LevelSelectText:			binclude "Data/Screens/Level Select/KosinskiM Art/Text.bin"
 	even
 
@@ -78,5 +74,9 @@ ArtKosM_DEZTitleCard:			binclude "Objects/Title Card/KosinskiM Art/Levels/DEZ - 
 ; Kosinski Module compressed DEZ graphics
 ; ===========================================================================
 
-ArtKosM_Spikebonker:			binclude "Objects/Spikebonker/KosinskiM Art/Spikebonker.bin"
+ArtKosM_Spikebonker:			binclude "Objects/Badniks/Spikebonker/KosinskiM Art/Spikebonker.bin"
+	even
+ArtKosM_BataPyon:				binclude "Objects/Badniks/Bata-pyon/KosinskiM Art/Bata-pyon.bin"
+	even
+ArtKosM_BallHog:				binclude "Objects/Badniks/Ball Hog/KosinskiM Art/Ball Hog.bin"
 	even

@@ -455,7 +455,8 @@ Status_ObjDefeated		= 7
 
 ArtTile_SpikesSprings		= $484
 ArtTile_Monitors			= $4AC
-ArtTile_StarPost			= $5E4
+ArtTile_EnemyScore			= $5E4
+ArtTile_StarPost			= $5F0
 ArtTile_Sonic				= $680
 ArtTile_Ring				= $6BC
 ArtTile_Ring_Sparks		= ArtTile_Ring+4

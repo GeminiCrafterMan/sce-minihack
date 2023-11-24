@@ -64,14 +64,8 @@ Sonic_Init:	; Routine 0
 		move.w	#$600,Sonic_Knux_top_speed-Sonic_Knux_top_speed(a4)
 		move.w	#$C,Sonic_Knux_acceleration-Sonic_Knux_top_speed(a4)
 		move.w	#$80,Sonic_Knux_deceleration-Sonic_Knux_top_speed(a4)
-		tst.b	(Last_star_post_hit).w
-		bne.s	Sonic_Init_Continued
-
-		; only happens when not starting at a checkpoint:
 		move.w	#make_art_tile(ArtTile_Sonic,0,0),art_tile(a0)
 		move.w	#bytes_to_word($C,$D),top_solid_bit(a0)
-
-		; only happens when not starting at a Special Stage ring:
 		move.w	x_pos(a0),(Saved_X_pos).w
 		move.w	y_pos(a0),(Saved_Y_pos).w
 		move.w	art_tile(a0),(Saved_art_tile).w
@@ -2658,7 +2652,7 @@ loc_12806:
 
 loc_1280A:
 		divu.w	#$16,d0
-		addi.b	#$31,d0
+		addi.b	#frS_Flip1,d0
 		move.b	d0,mapping_frame(a0)
 		clr.b	anim_frame_timer(a0)
 		rts
@@ -2670,7 +2664,7 @@ loc_1281E:
 		neg.b	d0
 		addi.b	#$8F,d0
 		divu.w	#$16,d0
-		addi.b	#$31,d0
+		addi.b	#frS_Flip1,d0
 		move.b	d0,mapping_frame(a0)
 		clr.b	anim_frame_timer(a0)
 		rts
@@ -2678,7 +2672,7 @@ loc_1281E:
 
 byte_1286E:
 		dc.b 0
-		dc.b $3D
+		dc.b frS_Flip12+1
 		dc.b $49
 		dc.b $49
 ; ---------------------------------------------------------------------------
@@ -2791,7 +2785,7 @@ loc_129A4:
 
 loc_129A8:
 		divu.w	#$16,d0
-		addi.b	#$31,d0
+		addi.b	#frS_Flip1,d0
 		move.b	d0,mapping_frame(a0)
 		clr.b	anim_frame_timer(a0)
 		rts
@@ -2814,7 +2808,7 @@ loc_129D6:
 
 loc_129E2:
 		divu.w	#$16,d0
-		addi.b	#$31,d0
+		addi.b	#frS_Flip1,d0
 		move.b	d0,mapping_frame(a0)
 		clr.b	anim_frame_timer(a0)
 		rts
@@ -2832,7 +2826,7 @@ loc_129F6:
 loc_12A12:
 		addi.b	#$B,d0
 		divu.w	#$16,d0
-		addi.b	#$31,d0
+		addi.b	#frS_Flip1,d0
 		move.b	d0,mapping_frame(a0)
 		clr.b	anim_frame_timer(a0)
 		rts
@@ -2946,7 +2940,7 @@ ReloadPlayerMaps:
 	.mapLUT:
 		dc.l	Map_Sonic
 	.superMapLUT:
-		dc.l	Map_SuperSonic
+		dc.l	Map_Sonic
 
 PlayerDPLCToA2:
 		moveq	#0,d1
@@ -2966,7 +2960,7 @@ PlayerDPLCToA2:
 	.plcLUT:
 		dc.l	PLC_Sonic
 	.superplcLUT:
-		dc.l	PLC_SuperSonic
+		dc.l	PLC_Sonic
 
 PlayerArtToD6:
 		moveq	#0,d6
@@ -2986,7 +2980,7 @@ PlayerArtToD6:
 	.artLUT:
 		dc.l	ArtUnc_Sonic>>1
 	.superartLUT:
-		dc.l	ArtUnc_SuperSonic>>1
+		dc.l	ArtUnc_Sonic>>1
 
 ; ---------------------------------------------------------------------------
 ; Sonic object data

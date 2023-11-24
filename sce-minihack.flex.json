@@ -1,7 +1,7 @@
 {
     "Flex": 2,
     "name": "SCE Mini-hack",
-    "node": "11ab8705-cee9-4ff8-afec-5da3926c3bc8",
+    "node": "5ca81442-6839-4c2b-946d-e124f48fcffd",
     "objects": [
         {
             "name": "Player",
@@ -143,6 +143,54 @@
                         "label": ""
                     },
                     "uuid": "c9d3c1b6-68fe-4c33-b6e6-b0ac18e8c1bc"
+                }
+            ],
+            "isDirectory": true,
+            "expanded": true,
+            "uuid": "1977a4e3-ebaf-4c1e-85ca-880dffa66c5e"
+        },
+        {
+            "name": "Objects",
+            "children": [
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Enemy Points",
+                    "palettes": [],
+                    "art": {
+                        "path": "Objects/Explosion/KosinskiM Art/Enemy points.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Explosion/Object Data/Map - Enemy Points.asm",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "a8144268-39ec-4bd4-ade1-24f48fcffdfc"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Starpost",
+                    "palettes": [],
+                    "art": {
+                        "path": "Objects/StarPost/KosinskiM Art/Starpost.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/StarPost/Object Data/Map - Starpost.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "5ca81442-6839-4c2b-946d-e124f48fcffd"
                 },
                 {
                     "format": "Sonic 3&K Object.js",
@@ -163,15 +211,36 @@
                         "label": ""
                     },
                     "uuid": "11ab8705-cee9-4ff8-afec-5da3926c3bc8"
-                }
-            ],
-            "isDirectory": true,
-            "expanded": true,
-            "uuid": "1977a4e3-ebaf-4c1e-85ca-880dffa66c5e"
-        },
-        {
-            "name": "Objects",
-            "children": [
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Egg Capsule",
+                    "palettes": [
+                        {
+                            "path": "Objects/Sonic/Palettes/Sonic.bin",
+                            "length": 1
+                        },
+                        {
+                            "path": "Levels/DEZ/Palettes/Death Egg Zone.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "Objects/Egg Capsule/KosinskiM Art/Egg Capsule.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Egg Capsule/Object Data/Map - Egg Capsule.asm",
+                        "label": "Map_EggCapsule"
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "06785ca8-1442-4839-ac2b-d46de124f48f"
+                },
                 {
                     "format": "Sonic 3&K Object.js",
                     "name": "Spikes",
@@ -277,6 +346,92 @@
             "isDirectory": true,
             "expanded": true,
             "uuid": "77a4e3eb-af6c-4e45-8a88-0dffa66c5eb0"
+        },
+        {
+            "name": "Enemies",
+            "children": [
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Spikebonker",
+                    "palettes": [
+                        {
+                            "length": 1,
+                            "blank": true
+                        },
+                        {
+                            "path": "Levels/DEZ/Palettes/Death Egg Zone.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "Objects/Badniks/Spikebonker/KosinskiM Art/Spikebonker.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Badniks/Spikebonker/Object Data/Map - Spikebonker.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "b1621777-1043-4ae7-ac69-4c0d961454aa"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Bata-pyon",
+                    "palettes": [
+                        {
+                            "length": 1,
+                            "blank": true
+                        },
+                        {
+                            "path": "Levels/DEZ/Palettes/Death Egg Zone.bin",
+                            "length": 3
+                        }
+                    ],
+                    "art": {
+                        "path": "Objects/Badniks/Bata-pyon/KosinskiM Art/Bata-pyon.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Badniks/Bata-pyon/Object Data/Map - Bata-pyon.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "7eb16217-7710-43ca-a7ac-694c0d961454"
+                },
+                {
+                    "format": "Sonic 3&K Object.js",
+                    "name": "Ball Hog",
+                    "palettes": [],
+                    "art": {
+                        "path": "Objects/Badniks/Ball Hog/KosinskiM Art/Ball Hog.bin",
+                        "compression": "Kosinski-M",
+                        "offset": 0
+                    },
+                    "mappings": {
+                        "path": "Objects/Badniks/Ball Hog/Object Data/Map - Ball Hog.bin",
+                        "label": ""
+                    },
+                    "dplcs": {
+                        "enabled": false,
+                        "path": "",
+                        "label": ""
+                    },
+                    "uuid": "8fcedcbf-ce1d-4480-910c-dcee7d2bf34b"
+                }
+            ],
+            "isDirectory": true,
+            "expanded": true,
+            "uuid": "cf8fcedc-bfce-4d74-8051-0cdcee7d2bf3"
         }
     ]
 }

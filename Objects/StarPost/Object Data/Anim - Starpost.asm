@@ -1,4 +1,4 @@
-Ani_StarPost: offsetTable
+Ani_Starpost: offsetTable
 		offsetTableEntry.w byte_2D33E
 		offsetTableEntry.w byte_2D341
 		offsetTableEntry.w byte_2D344
