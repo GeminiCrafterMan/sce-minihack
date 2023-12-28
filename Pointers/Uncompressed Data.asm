@@ -20,6 +20,11 @@ ArtUnc_SuperSonic_Stars:	binclude	"Objects/Sonic/Uncompressed Art/Super Sonic st
 ; Death Egg
 Art_DEZFan:					binclude "Levels/DEZ/Animated Tiles/Uncompressed Art/Fan.bin"
 	even
+Art_DEZAcid1:				binclude "Levels/DEZ/Animated Tiles/Uncompressed Art/Acid Surface.bin"
+	even
+Art_DEZAcid2:				binclude "Levels/DEZ/Animated Tiles/Uncompressed Art/Acid.bin"
+	even
+	align $800
 ; Green Hill
 Art_GhzFlowerStalk:			binclude "Levels/GHZ/Animated Tiles/Uncompressed Art/GHZ Flower Stalk.bin"
 	even

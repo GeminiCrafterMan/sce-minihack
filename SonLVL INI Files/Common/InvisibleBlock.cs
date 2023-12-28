@@ -14,6 +14,14 @@ namespace S3KObjectDefinitions.Common
 		}
 	}
 
+	class InvisibleAcidBlock : InvisibleBlock
+	{
+		public override string Name
+		{
+			get { return "Invisible Acid Block"; }
+		}
+	}
+
 	class InvisibleLavaBlock : InvisibleBlock
 	{
 		public override string Name

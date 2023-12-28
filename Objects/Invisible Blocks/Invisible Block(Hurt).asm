@@ -11,6 +11,16 @@ Obj_Invisible_ShockBlock:
 		bra.s	Obj_Invisible_HurtBlock
 
 ; ---------------------------------------------------------------------------
+; Invisible horizontal acid/water damage block (Object)
+; ---------------------------------------------------------------------------
+
+; =============== S U B R O U T I N E =======================================
+
+Obj_Invisible_AcidBlock:
+		bset	#Status_BublShield,shield_reaction(a0)
+		bra.s	Obj_Invisible_HurtBlock
+
+; ---------------------------------------------------------------------------
 ; Invisible horizontal lava block (Object)
 ; ---------------------------------------------------------------------------
 

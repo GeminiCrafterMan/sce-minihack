@@ -110,8 +110,8 @@ Obj_Index:
 		dc.l DeleteObject						; $68
 		dc.l DeleteObject						; $69
 		dc.l Obj_Invisible_HurtBlock			; $6A
-		dc.l Obj_Invisible_KillBlock				; $6B
-		dc.l DeleteObject						; $6C
+		dc.l Obj_Invisible_KillBlock			; $6B
+		dc.l Obj_Invisible_AcidBlock			; $6C
 		dc.l Obj_Invisible_ShockBlock			; $6D
 		dc.l Obj_Invisible_LavaBlock			; $6E
 		dc.l DeleteObject						; $6F
@@ -131,8 +131,8 @@ Obj_Index:
 		dc.l DeleteObject						; $7D
 		dc.l DeleteObject						; $7E
 		dc.l DeleteObject						; $7F
-		dc.l Obj_HiddenMonitor				; $80
-		dc.l Obj_EggCapsule					; $81
+		dc.l Obj_HiddenMonitor					; $80
+		dc.l Obj_EggCapsule						; $81
 		dc.l DeleteObject						; $82
 		dc.l DeleteObject						; $83
 		dc.l DeleteObject						; $84
