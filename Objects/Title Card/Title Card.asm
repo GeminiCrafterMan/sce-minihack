@@ -270,6 +270,7 @@ ObjArray_TtlCardBonus:
 TitleCard_LevelGfx:
 		dc.l ArtKosM_DEZTitleCard	; DEZ
 		dc.l ArtKosM_DEZTitleCard	; DEZ
+		dc.l ArtKosM_DEZTitleCard	; DEZ
 
 		zonewarning TitleCard_LevelGfx,4
 ; ---------------------------------------------------------------------------

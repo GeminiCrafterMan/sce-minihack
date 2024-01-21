@@ -3,7 +3,7 @@
 ; ===========================================================================
 
 ; Assembly options
-ZoneCount:				= 2	; discrete zones are: DEZ, startinglevels
+ZoneCount:				= 3	; discrete zones are: DEZ, startinglevels
 GameDebug:				= 1	; if 1, enable debug mode for Sonic
 GameDebugAlt:			= 0	; if 1, enable alt debug mode for Sonic
 Lagometer:				= 0	; if 1, enable debug lagometer
@@ -295,10 +295,11 @@ EndOfHeader:
 ; Subroutine to load Sonic object
 ; ---------------------------------------------------------------------------
 
-		include "Objects/Sonic/Sonic.asm"
+		include "Objects/Player Characters/Sonic.asm"
+		include "Objects/Player Characters/Knuckles.asm"
 		include "Objects/Spin Dust/SpinDust.asm"
 		include "Objects/Shields/Shields.asm"
-		include	"Objects/Sonic/Super and Hyper form objects.asm"
+		include	"Objects/Player Characters/Super and Hyper form objects.asm"
 
 ; ---------------------------------------------------------------------------
 ; Subroutine to load a objects
@@ -342,9 +343,9 @@ EndOfHeader:
 ; ---------------------------------------------------------------------------
 
 		if GameDebugAlt
-			include "Objects/Sonic/DebugMode(Crackers).asm"
+			include "Objects/Player Characters/DebugMode(Crackers).asm"
 		else
-			include "Objects/Sonic/DebugMode.asm"
+			include "Objects/Player Characters/DebugMode.asm"
 		endif
 
 	endif

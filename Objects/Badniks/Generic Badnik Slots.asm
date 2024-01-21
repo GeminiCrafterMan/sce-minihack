@@ -10,6 +10,9 @@ Obj_BadnikSlot1:
 		dc.l	Obj_BataPyon	; ???
 	endr
 	rept 4
+		dc.l	DeleteObject	; BGZ
+	endr
+	rept 4
 		dc.l	DeleteObject	; test levels
 	endr
 	zonewarning	.index,(4*4)
@@ -24,6 +27,9 @@ Obj_BadnikSlot2:
 .index:
 	rept 4
 		dc.l	Obj_Spikebonker	; ???
+	endr
+	rept 4
+		dc.l	DeleteObject	; BGZ
 	endr
 	rept 4
 		dc.l	DeleteObject	; test levels
@@ -42,6 +48,9 @@ Obj_BadnikSlot3:
 		dc.l	Obj_BallHog	; ???
 	endr
 	rept 4
+		dc.l	DeleteObject	; BGZ
+	endr
+	rept 4
 		dc.l	DeleteObject	; test levels
 	endr
 	zonewarning	.index,(4*4)
@@ -56,6 +65,9 @@ Obj_BadnikSlot4:
 .index:
 	rept 4
 		dc.l	DeleteObject	; ???
+	endr
+	rept 4
+		dc.l	DeleteObject	; BGZ
 	endr
 	rept 4
 		dc.l	DeleteObject	; test levels
@@ -74,6 +86,9 @@ Obj_BadnikSlot5:
 		dc.l	DeleteObject	; ???
 	endr
 	rept 4
+		dc.l	DeleteObject	; BGZ
+	endr
+	rept 4
 		dc.l	DeleteObject	; test levels
 	endr
 	zonewarning	.index,(4*4)
@@ -88,6 +103,9 @@ Obj_BadnikSlot6:
 .index:
 	rept 4
 		dc.l	DeleteObject	; ???
+	endr
+	rept 4
+		dc.l	DeleteObject	; BGZ
 	endr
 	rept 4
 		dc.l	DeleteObject	; test levels

@@ -8,6 +8,7 @@ ptr_mus_ditc:		SMPS_MUSIC_METADATA	Music_DItC,	8,	0 ; Deep Into the Code by Bobb
 ptr_mus_unti:		SMPS_MUSIC_METADATA	Music_Unti,	8,	0 ; Untitled by Bobby Prince from 'DOOM' (1993)
 ptr_mus_ghz:		SMPS_MUSIC_METADATA Music_GHZ,	8,	0 ; Green Hill Zone
 ptr_mus_ehz:		SMPS_MUSIC_METADATA Music_EHZ,	s2TempotoS1($08),	0 ; Emerald Hill Zone
+ptr_mus_bgz:		SMPS_MUSIC_METADATA Music_BGZ,	8,	0 ; Blossom Gardens...
 
 ; Boss
 ptr_mus_boss:		SMPS_MUSIC_METADATA	Music_Boss, s3TempotoS1($FF), 0			; Boss
@@ -37,6 +38,8 @@ Music_Unti:			include "Sound/Music/Mus - Untitled.asm"
 Music_GHZ:			include "Sound/Music/Mus - GHZ.asm"
 	even
 Music_EHZ:			include "Sound/Music/Mus - EHZ.asm"
+	even
+Music_BGZ:			include "Sound/Music/Mus - BGZ.asm"
 	even
 Music_Boss:			include "Sound/Music/Mus - Miniboss.asm"
 	even

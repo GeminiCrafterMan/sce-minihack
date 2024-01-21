@@ -71,7 +71,13 @@ Obj_FallingEndSignInit:
 .nothighpriority
 		move.w	a0,(Signpost_addr).w						; put RAM address here for use by hidden monitor object
 		move.w	#bytes_to_word(60/2,48/2),y_radius(a0)	; set y_radius and x_radius
+		tst.b	(Player_mode).w
+		beq.s	.sonic
+		move.l	#AniRaw_EndSignsK,aniraw(a0)
+		bra.s	.cont
+	.sonic:
 		move.l	#AniRaw_EndSigns,aniraw(a0)
+	.cont:
 		move.w	(Camera_Y_pos).w,d0
 		subi.w	#$20,d0
 		move.w	d0,y_pos(a0)								; place vertical position at top of screen
@@ -115,7 +121,13 @@ Obj_EndSignLanded:
 ; ---------------------------------------------------------------------------
 +		move.b	#6,routine(a0)
 		clr.l	x_vel(a0)						; clear velocity
-		move.b	(Player_1+character_id).w,mapping_frame(a0)
+		tst.b	(Player_mode).w
+		beq.s	.sonic
+		move.b	#7,mapping_frame(a0)
+		bra.s	.cont
+	.sonic:
+		move.b	#0,mapping_frame(a0)
+	.cont:
 		rts
 ; ---------------------------------------------------------------------------
 
@@ -277,6 +289,13 @@ AniRaw_EndSigns:
 		dc.b	0,	1
 		dc.b	5,	2
 		dc.b	arfEnd	; end
+AniRaw_EndSignsK:
+		dc.b	1		; speed
+		dc.b	3,	4
+		dc.b	5,	9
+		dc.b	7,	8
+		dc.b	5,	2
+		dc.b	arfEnd	; end
 AniRaw_SignpostSparkle:
 		dc.b	1,   1
 		dc.b	2,   3
@@ -328,7 +347,13 @@ Obj_EndSignTouch:
 		tst.w	d0
 		beq.s	.skip
 		addq.b	#2,routine(a0)	;increment routine
+		tst.b	(Player_mode).w
+		beq.s	.sonic
+		move.l	#AniRaw_EndSignsK,aniraw(a0)
+		bra.s	.cont
+	.sonic:
 		move.l	#AniRaw_EndSigns,aniraw(a0)
+	.cont:
 		sfx		sfx_Signpost	; S2 signpost sound
 		move.w	(Camera_max_X_pos).w,(Camera_min_X_pos).w ; lock screen position
 

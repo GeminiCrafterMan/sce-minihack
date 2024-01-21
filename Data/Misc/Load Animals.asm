@@ -20,6 +20,11 @@ Offs_PLCAnimals: offsetTable
 		offsetTableEntry.w PLCAnimals_DEZ1	; DEZ3
 		offsetTableEntry.w PLCAnimals_DEZ1	; DEZ4
 
+		offsetTableEntry.w PLCAnimals_BGZ1	; BGZ1
+		offsetTableEntry.w PLCAnimals_BGZ1	; BGZ2
+		offsetTableEntry.w PLCAnimals_BGZ1	; BGZ3
+		offsetTableEntry.w PLCAnimals_BGZ1	; BGZ4
+
 		offsetTableEntry.w PLCAnimals_DEZ1	; DEZ1
 		offsetTableEntry.w PLCAnimals_DEZ1	; DEZ2
 		offsetTableEntry.w PLCAnimals_DEZ1	; DEZ3
@@ -32,3 +37,8 @@ PLCAnimals_DEZ1: plrlistheader
 		plreq $580, ArtKosM_BlueFlicky
 		plreq $592, ArtKosM_Chicken
 PLCAnimals_DEZ1_end
+
+PLCAnimals_BGZ1: plrlistheader
+		plreq $580, ArtKosM_BlueFlicky
+		plreq $592, ArtKosM_Chicken
+PLCAnimals_BGZ1_end

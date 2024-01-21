@@ -11,58 +11,58 @@
                     "name": "Sonic",
                     "palettes": [
                         {
-                            "path": "Objects/Sonic/Palettes/Sonic.bin",
+                            "path": "Objects/Player Characters/Palettes/Sonic.bin",
                             "length": 1
                         },
                         {
-                            "path": "Objects/Sonic/Palettes/Water Sonic.bin",
+                            "path": "Objects/Player Characters/Palettes/Water Sonic.bin",
                             "length": 1
                         }
                     ],
                     "art": {
-                        "path": "Objects/Sonic/Uncompressed Art/Sonic.bin",
+                        "path": "Objects/Player Characters/Uncompressed Art/Sonic.bin",
                         "compression": "Uncompressed",
                         "offset": 0
                     },
                     "mappings": {
-                        "path": "Objects/Sonic/Object Data/Map - Sonic.bin",
+                        "path": "Objects/Player Characters/Object Data/Map - Sonic.bin",
                         "label": ""
                     },
                     "dplcs": {
                         "enabled": true,
-                        "path": "Objects/Sonic/Object Data/PLC - Sonic.bin",
+                        "path": "Objects/Player Characters/Object Data/PLC - Sonic.bin",
                         "label": ""
                     },
-                    "uuid": "6c6e681e-8ca0-4bbb-b510-4d9ea9895566"
+                    "uuid": "962d8db2-1f2b-43b9-bace-aaaa518ad240"
                 },
                 {
                     "format": "Sonic 3&K Player.js",
-                    "name": "Super Sonic",
+                    "name": "Knuckles",
                     "palettes": [
                         {
-                            "path": "Objects/Sonic/Palettes/Sonic.bin",
+                            "path": "Objects/Player Characters/Palettes/Knuckles.bin",
                             "length": 1
                         },
                         {
-                            "path": "Objects/Sonic/Palettes/Water Sonic.bin",
+                            "path": "Objects/Player Characters/Palettes/Water Knuckles.bin",
                             "length": 1
                         }
                     ],
                     "art": {
-                        "path": "Objects/Sonic/Uncompressed Art/Super Sonic.bin",
+                        "path": "Objects/Player Characters/Uncompressed Art/Knuckles.bin",
                         "compression": "Uncompressed",
                         "offset": 0
                     },
                     "mappings": {
-                        "path": "Objects/Sonic/Object Data/Map - Super Sonic.bin",
+                        "path": "Objects/Player Characters/Object Data/Map - Knuckles.bin",
                         "label": ""
                     },
                     "dplcs": {
                         "enabled": true,
-                        "path": "Objects/Sonic/Object Data/PLC - Super Sonic.bin",
+                        "path": "Objects/Player Characters/Object Data/PLC - Knuckles.bin",
                         "label": ""
                     },
-                    "uuid": "86c7ae24-b9d5-4ed1-b598-e992d3d929eb"
+                    "uuid": "6c6e681e-8ca0-4bbb-b510-4d9ea9895566"
                 },
                 {
                     "format": "Sonic 3&K Player.js",
@@ -177,12 +177,12 @@
                     "name": "Starpost",
                     "palettes": [
                         {
-                            "path": "Objects/Sonic/Palettes/Sonic.bin",
+                            "path": "Objects/Player Characters/Palettes/Sonic.bin",
                             "length": 1
                         },
                         {
-                            "path": "Levels/DEZ/Palettes/Death Egg Zone.bin",
-                            "length": 3
+                            "path": "Objects/Player Characters/Palettes/Knuckles.bin",
+                            "length": 1
                         }
                     ],
                     "art": {

@@ -8,11 +8,12 @@ LevelSelect_VRAM:				= 0
 
 ; Variables
 LevelSelect_ZoneCount:			= ZoneCount
-LevelSelect_ActDEZCount:			= 4	; DEZ
+LevelSelect_ActDEZCount:		= 4	; DEZ
+LevelSelect_ActBGZCount:		= 4	; BGZ
 LevelSelect_ActTLCount:			= 4	; DEZ
 LevelSelect_MusicTestCount:		= 8
 LevelSelect_SoundTestCount:		= LevelSelect_MusicTestCount+1
-LevelSelect_SampleTestCount:		= LevelSelect_SoundTestCount+1
+LevelSelect_SampleTestCount:	= LevelSelect_SoundTestCount+1
 LevelSelect_MaxCount:			= 11
 LevelSelect_MaxMusicNumber:		= (mus__Last-mus__First)
 LevelSelect_MaxSoundNumber:		= (sfx__Last-sfx__First)
@@ -24,7 +25,7 @@ LevelSelect_MaxSampleNumber:	= (dac__Last-dac__First)
 vLevelSelect_MusicCount:			ds.w 1
 vLevelSelect_SoundCount:			ds.w 1
 vLevelSelect_SampleCount:			ds.w 1
-vLevelSelect_CtrlTimer:			ds.w 1
+vLevelSelect_CtrlTimer:				ds.w 1
 vLevelSelect_VCount:				ds.w 1
 vLevelSelect_HCount:				ds.w $10
 
@@ -64,6 +65,7 @@ LevelSelect_Screen:
 		lea	(Pal_LevelSelect).l,a1
 		lea	(Target_palette).w,a2
 		jsr	(PalLoad_Line32).w
+		jsr		LevelSelect_LoadLevel_CharacterSwitcher.update
 		bsr.w	LevelSelect_LoadText
 		move.w	#palette_line_1+LevelSelect_VRAM,d3
 		bsr.w	LevelSelect_LoadMainText
@@ -119,9 +121,10 @@ LevelSelect_Controls:
 		cmpi.w	#LevelSelect_SampleTestCount,d3
 		beq.w	LevelSelect_LoadSampleNumber
 		cmpi.w	#LevelSelect_SoundTestCount,d3
-		beq.s	LevelSelect_LoadSoundNumber
+		beq.w	LevelSelect_LoadSoundNumber
 		cmpi.w	#LevelSelect_MusicTestCount,d3
-		beq.s	LevelSelect_LoadMusicNumber
+		beq.w	LevelSelect_LoadMusicNumber
+		bsr.s	LevelSelect_LoadLevel_CharacterSwitcher
 		cmpi.w	#LevelSelect_ZoneCount,d3
 		bhs.s	LevelSelect_LoadLevel_Return
 
@@ -148,9 +151,49 @@ LevelSelect_LoadLevel_Return:
 
 LevelSelect_LoadMaxActs:
 		dc.w LevelSelect_ActDEZCount-1	; DEZ
+		dc.w LevelSelect_ActBGZCount-1	; BGZ
 		dc.w LevelSelect_ActTLCount-1	; TL
 
 		zonewarning LevelSelect_LoadMaxActs,2
+
+; ---------------------------------------------------------------------------
+; Load Characters
+; ---------------------------------------------------------------------------
+
+LevelSelect_LoadLevel_CharacterSwitcher:
+		btst	#button_C,(Ctrl_1_pressed).w
+		beq.s	.ret
+		bchg	#0,(Player_mode).w
+		sfx		sfx_Switch
+	.update:	; this part sucks a lot
+		moveq	#0,d0
+		move.b	(Player_mode).w,d0
+		lsl.w	#2,d0
+		move.w	#make_art_tile(ArtTile_Sonic,2,0),(Player_1+art_tile).w
+		move.w	#tiles_to_bytes(ArtTile_Sonic),(Player_1+vram_art).w
+		move.l	.plrIDs(pc,d0.w),(Player_1).w
+		move.w	#$194,(Player_1+x_pos).w
+		move.w	#$F0,(Player_1+y_pos).w
+		bset	#0,(Player_1+status).w
+		moveq	#0,d0
+		move.b	(Player_mode).w,d0
+		ext.w	d0
+		lsl.w	#1,d0
+		move.w	.palIDs(pc,d0.w),d0
+		move.w	d0,d1
+		jsr	(LoadPalette).w
+		move.w	d1,d0
+		jmp	(LoadPalette_Immediate).w
+
+.palIDs:
+		dc.w	palid_LSSonic		; Sonic
+		dc.w	palid_LSKnuckles	; Knuckles
+		even
+.plrIDs:
+		dc.l	DeleteObject		; Sonic
+		dc.l	DeleteObject		; Knuckles
+	.ret:
+		rts
 
 ; ---------------------------------------------------------------------------
 ; Load Music
@@ -163,11 +206,17 @@ LevelSelect_LoadMusicNumber:
 		bsr.w	LevelSelect_FindLeftRightControls
 		move.w	d3,(vLevelSelect_MusicCount).w
 		move.b	(Ctrl_1_pressed).w,d1
+;		btst	#bitStart,d1
+;		bne.s	LevelSelect_ToTitleScreen
 		andi.b	#btnABC,d1
-		beq.s	LevelSelect_LoadLevel_Return
+		beq.w	LevelSelect_LoadLevel_Return
 		move.w	d3,d0
 		addq.w	#mus__First,d0		; $00 is reserved for silence
 		jmp	(SMPS_QueueSound1).w	; play music
+
+;LevelSelect_ToTitleScreen:
+;		move.b	#id_TitleScreen,(Game_mode).w	; set game mode
+;		jmp		Title_Screen
 
 ; ---------------------------------------------------------------------------
 ; Load Sound
@@ -181,7 +230,7 @@ LevelSelect_LoadSoundNumber:
 		move.w	d3,(vLevelSelect_SoundCount).w
 		move.b	(Ctrl_1_pressed).w,d1
 		andi.b	#btnABC,d1
-		beq.s	LevelSelect_LoadLevel_Return
+		beq.w	LevelSelect_LoadLevel_Return
 		move.w	d3,d0
 		addi.w	#sfx__First,d0
 		jmp	(SMPS_QueueSound2).w	; play sfx
@@ -198,7 +247,7 @@ LevelSelect_LoadSampleNumber:
 		move.w	d3,(vLevelSelect_SampleCount).w
 		move.b	(Ctrl_1_pressed).w,d1
 		andi.b	#btnABC,d1
-		beq.s	LevelSelect_LoadLevel_Return
+		beq.w	LevelSelect_LoadLevel_Return
 		move.w	d3,d0
 		addi.w	#dac__First,d0
 		jmp	(SMPS_PlayDACSample).w	; play sample
@@ -339,6 +388,11 @@ LevelSelect_LoadMainText:
 ; --------------------------------------------------------------------------
 
 LevelSelect_ActTextIndex: offsetTable
+		offsetTableEntry.w LevelSelect_LoadAct1		; DEZ1
+		offsetTableEntry.w LevelSelect_LoadAct2		; DEZ2
+		offsetTableEntry.w LevelSelect_LoadAct3		; DEZ3
+		offsetTableEntry.w LevelSelect_LoadAct4		; DEZ4
+
 		offsetTableEntry.w LevelSelect_LoadAct1		; DEZ1
 		offsetTableEntry.w LevelSelect_LoadAct2		; DEZ2
 		offsetTableEntry.w LevelSelect_LoadAct3		; DEZ3
@@ -538,8 +592,8 @@ LevelSelect_MappingOffsets:
 		dc.w planeLocH28(0,26)
 LevelSelect_Text:
 		levselstr "   DEATH EGG          - ACT 1           "
+		levselstr "   BLOSSOM GARDENS    - ACT 1           "
 		levselstr "   TEST LEVELS        - GREEN HILL      "
-		levselstr "   UNKNOWN LEVEL      - UNKNOWN         "
 		levselstr "   UNKNOWN LEVEL      - UNKNOWN         "
 		levselstr "   UNKNOWN LEVEL      - UNKNOWN         "
 		levselstr "   UNKNOWN LEVEL      - UNKNOWN         "

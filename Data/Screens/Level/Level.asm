@@ -56,11 +56,7 @@ Level_Screen:
 		move.w	#$8A00+255,(H_int_counter_command).w				; set palette change position (for water)
 		move.w	(H_int_counter_command).w,VDP_control_port-VDP_control_port(a6)
 		ResetDMAQueue
-		moveq	#palid_Sonic,d0
-		move.w	d0,d1
-		jsr	(LoadPalette).w											; load Sonic's palette
-		move.w	d1,d0
-		jsr	(LoadPalette_Immediate).w
+		jsr		LoadPlayerPal
 		lea	(PLC_Main).l,a5
 		jsr	(LoadPLC_Raw_KosM).w									; load hud and ring art
 		jsr	(CheckLevelForWater).l
@@ -68,7 +64,7 @@ Level_Screen:
 		tst.b	(Water_flag).w
 		beq.s	.notwater
 		move.w	#$8014,VDP_control_port-VDP_control_port(a6)			; H-int enabled
-		moveq	#palid_WaterSonic,d0
+		moveq	#palid_WaterSonic,d0 ; change this later? install dynawater mayhaps
 		move.w	d0,d1
 		jsr	(LoadPalette2).w											; load Sonic's water palette
 		move.w	d1,d0
@@ -179,11 +175,36 @@ Level_Screen:
 ; =============== S U B R O U T I N E =======================================
 
 SpawnLevelMainSprites:
-		move.l	#Obj_ResetCollisionResponseList,(Reserved_object_3+address).w
-		move.l	#Obj_Sonic,(Player_1+address).w
+		moveq	#0,d0
+		move.b	(Player_mode).w,d0
+		lsl.w	#2,d0
+		move.l	.plrIDs(pc,d0.w),(Player_1).w
+		bra.s	.cont
+
+.plrIDs:
+		dc.l	Obj_Sonic
+		dc.l	Obj_Knuckles
+
+.cont:
+		move.l	#Obj_ResetCollisionResponseList,(Reserved_object_3).w
 		move.l	#Obj_DashDust,(v_Dust+address).w
-		move.l	#Obj_Insta_Shield,(v_Shield+address).w
+;		move.w	#Player_1,(v_Dust+parent).w
 		rts
+
+LoadPlayerPal:
+		moveq	#0,d0
+		move.b	(Player_mode).w,d0
+		lsl.w	#1,d0
+		move.w	.palIDs(pc,d0.w),d0
+		move.w	d0,d1
+		jsr	(LoadPalette).w											; load Sonic's palette
+		move.w	d1,d0
+		jmp	(LoadPalette_Immediate).w
+
+.palIDs:
+		dc.w	palid_Sonic		; S
+		dc.w	palid_Knuckles	; K
+		even
 
 ; =============== S U B R O U T I N E =======================================
 

@@ -111,11 +111,11 @@ SuperHyper_PalCycle_Apply:
 		rts
 ; ---------------------------------------------------------------------------
 PalCycle_SuperSonic:
-		binclude	"Objects/Sonic/Palettes/Super Sonic.bin"
+		binclude	"Objects/Player Characters/Palettes/Super Sonic.bin"
 		even
 
 PalCycle_HyperSonic:
-		binclude	"Objects/Sonic/Palettes/Hyper Sonic.bin"
+		binclude	"Objects/Player Characters/Palettes/Hyper Sonic.bin"
 		even
 
 ; Re-add Tails and Knuckles's Super/Hyper cycles here if you decide to add them...

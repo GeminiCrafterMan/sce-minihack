@@ -10,6 +10,10 @@ DebugList: offsetTable
 	rept 4
 		offsetTableEntry.w .DEZ1
 	endr
+
+	rept 4
+		offsetTableEntry.w .DEZ1
+	endr
 		zonewarning DebugList,(2*4)
 ; ---------------------------------------------------------------------------
 

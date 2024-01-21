@@ -5,6 +5,7 @@ Map_TitleCard:
 		dc.w Map_TitleCardZone-Map_TitleCard		; ZONE
 		dc.w Map_TitleCardDEZ-Map_TitleCard		; DEATH EGG
 		dc.w Map_TitleCardDEZ-Map_TitleCard		; DEATH EGG
+		dc.w Map_TitleCardDEZ-Map_TitleCard		; DEATH EGG
 Map_TitleCardRBanner:
 		dc.w $10
 		dc.b $58, 9, $85, $10, $FF, $E8

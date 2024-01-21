@@ -1536,6 +1536,9 @@ GetAngleArray:
 	rept 4
 		dc.l	S1AngleArray	; DEZ
 	endr
+	rept 4
+		dc.l	S1AngleArray	; BGZ
+	endr
 		dc.l	S1AngleArray	; GHZ
 		dc.l	S2AngleArray	; EHZ
 		dc.l	S1AngleArray	; SLZ
@@ -1554,6 +1557,9 @@ GetHeightMaps:
 	rept 4
 		dc.l	S1HeightMaps	; DEZ
 	endr
+	rept 4
+		dc.l	S1HeightMaps	; BGZ
+	endr
 		dc.l	S1HeightMaps	; GHZ
 		dc.l	S2HeightMaps	; EHZ
 		dc.l	S1HeightMaps	; SLZ
@@ -1571,6 +1577,9 @@ GetHeightMapsRot:
 	ZoneHeightMapsRot:
 	rept 4
 		dc.l	S1HeightMapsRot	; DEZ
+	endr
+	rept 4
+		dc.l	S1HeightMapsRot	; BGZ
 	endr
 		dc.l	S1HeightMapsRot	; GHZ
 		dc.l	S2HeightMapsRot	; EHZ

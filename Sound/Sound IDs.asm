@@ -9,26 +9,27 @@ idstart :=	1
 
 mus__First = idstart
 ; Levels
-mus_IStD =			SMPS_id(ptr_mus_istd)
-mus_DItC =			SMPS_id(ptr_mus_ditc)
-mus_Unti =			SMPS_id(ptr_mus_unti)
-mus_GHZ =			SMPS_id(ptr_mus_ghz)
-mus_EHZ =			SMPS_id(ptr_mus_ehz)
+mus_IStD =				SMPS_id(ptr_mus_istd)
+mus_DItC =				SMPS_id(ptr_mus_ditc)
+mus_Unti =				SMPS_id(ptr_mus_unti)
+mus_GHZ =				SMPS_id(ptr_mus_ghz)
+mus_EHZ =				SMPS_id(ptr_mus_ehz)
+mus_BGZ =				SMPS_id(ptr_mus_bgz)
 
 ; Bosses
-mus_MidBoss =		SMPS_id(ptr_mus_boss)
-mus_ZoneBoss =		SMPS_id(ptr_mus_boss2)
+mus_MidBoss =			SMPS_id(ptr_mus_boss)
+mus_ZoneBoss =			SMPS_id(ptr_mus_boss2)
 
 ; Misc
-mus_Invincible =	SMPS_id(ptr_mus_invin)
-mus_SuperSonic =	SMPS_id(ptr_mus_super)
-mus_GotThrough =	SMPS_id(ptr_mus_through)
-mus_Drowning =		SMPS_id(ptr_mus_drowning)
+mus_Invincible =		SMPS_id(ptr_mus_invin)
+mus_SuperSonic =		SMPS_id(ptr_mus_super)
+mus_GotThrough =		SMPS_id(ptr_mus_through)
+mus_Drowning =			SMPS_id(ptr_mus_drowning)
 
-mus_Inter =			SMPS_id(ptr_mus_inter)
-mus_Broken =		SMPS_id(ptr_mus_broken)
+mus_Inter =				SMPS_id(ptr_mus_inter)
+mus_Broken =			SMPS_id(ptr_mus_broken)
 
-mus__Last =			SMPS_id(ptr_musend)-1
+mus__Last =				SMPS_id(ptr_musend)-1
 
 ; Sound effects
 offset :=	SoundIndex
@@ -69,8 +70,12 @@ sfx_Register =			SMPS_id(ptr_snd5D)
 sfx_SignpostFall =		SMPS_id(ptr_snd5E)
 sfx_SuperTransform =	SMPS_id(ptr_snd5F)
 sfx_BatapyonSpring =	SMPS_id(ptr_snd60)
+sfx_Land =				SMPS_id(ptr_snd61)
+sfx_Slide =				SMPS_id(ptr_snd62)
+sfx_Grab =				SMPS_id(ptr_snd63)
+sfx_Thump =				SMPS_id(ptr_snd64)
 
-sfx__Last =			SMPS_id(ptr_sndend)-1
+sfx__Last =				SMPS_id(ptr_sndend)-1
 
 ; Sound commands
 offset :=	Sound_ExIndex
@@ -78,10 +83,10 @@ ptrsize :=	2
 idstart :=	$FA
 
 flg__First = idstart
-sfx_Fade =			SMPS_id(ptr_flgFA)
-mus_Fade =			SMPS_id(ptr_flgFB)
-sfx_Sega =			SMPS_id(ptr_flgFC)
-mus_Speedup =		SMPS_id(ptr_flgFD)
-mus_Slowdown =		SMPS_id(ptr_flgFE)
-mus_Stop =			SMPS_id(ptr_flgFF)
-flg__Last =			SMPS_id(ptr_flgend)-1
+sfx_Fade =				SMPS_id(ptr_flgFA)
+mus_Fade =				SMPS_id(ptr_flgFB)
+sfx_Sega =				SMPS_id(ptr_flgFC)
+mus_Speedup =			SMPS_id(ptr_flgFD)
+mus_Slowdown =			SMPS_id(ptr_flgFE)
+mus_Stop =				SMPS_id(ptr_flgFF)
+flg__Last =				SMPS_id(ptr_flgend)-1

@@ -9,6 +9,11 @@ Offs_PLC: offsetTable
 		offsetTableEntry.w PLC2_DEZ1_Enemy
 	endr
 
+	rept 4
+		offsetTableEntry.w PLC1_BGZ_Misc
+		offsetTableEntry.w PLC2_BGZ_Enemy
+	endr
+
 		offsetTableEntry.w PLC1_GHZ_Misc
 		offsetTableEntry.w PLC2_GHZ_Enemy
 		offsetTableEntry.w PLC1_EHZ_Misc
@@ -58,6 +63,21 @@ PLC2_DEZ1_Enemy: plrlistheader
 		plreq $440,	ArtKosM_BallHog						; Ball Hog badnik
 		plreq $500, ArtKosM_Spikebonker					; Spikebonker badnik
 PLC2_DEZ1_Enemy_end
+
+; ===========================================================================
+; Pattern load cues - Blossom Gardens (Misc)
+; ===========================================================================
+
+PLC1_BGZ_Misc: plrlistheader
+PLC1_BGZ_Misc_end
+
+; ===========================================================================
+; Pattern load cues - Blossom Gardens (Enemy)
+; ===========================================================================
+
+PLC2_BGZ_Enemy: plrlistheader
+		plreq $500, ArtKosM_Spikebonker					; Spikebonker badnik
+PLC2_BGZ_Enemy_end
 
 ; ===========================================================================
 ; Pattern load cues - Green Hill (Misc)

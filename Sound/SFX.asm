@@ -45,6 +45,10 @@ ptr_snd5D:	SMPS_SFX_METADATA	Sound5D, $70, 0
 ptr_snd5E:	SMPS_SFX_METADATA	Sound5E, $70, 0
 ptr_snd5F:	SMPS_SFX_METADATA	Sound5F, $70, 0
 ptr_snd60:	SMPS_SFX_METADATA	Sound60, $70, 0
+ptr_snd61:	SMPS_SFX_METADATA	Sound61, $70, 0
+ptr_snd62:	SMPS_SFX_METADATA	Sound62, $70, 0
+ptr_snd63:	SMPS_SFX_METADATA	Sound63, $70, 0
+ptr_snd64:	SMPS_SFX_METADATA	Sound64, $70, 0
 
 ptr_sndend
 ; ---------------------------------------------------------------------------
@@ -116,4 +120,12 @@ Sound5E:	include	"Sound/SFX/Snd - Signpost Fall.asm"
 Sound5F:	include	"Sound/SFX/Snd - Super Transform.asm"
 	even
 Sound60:	include	"Sound/SFX/Snd - Bata-pyon Spring.asm"
+	even
+Sound61:	include	"Sound/SFX/Snd - Land.asm"
+	even
+Sound62:	include	"Sound/SFX/Snd - Slide.asm"
+	even
+Sound63:	include	"Sound/SFX/Snd - Grab.asm"
+	even
+Sound64:	include	"Sound/SFX/Snd - Thump.asm"
 	even

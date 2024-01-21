@@ -118,10 +118,24 @@ id_SonicDrown =					id(ptr_Sonic_Drown)		; C
 ZoneIDs:
 	phase 0 ; Reset ds.b value to 0
 z_DEZ:		ds.b 1
+z_BGZ:		ds.b 1
 z_Last =	*
 z_TL:		ds.b 1
 	dephase
 	zonewarning	ZoneIDs,1
+
+; ---------------------------------------------------------------------------
+; Levels
+; ---------------------------------------------------------------------------
+
+; character IDs
+CharacterIDs:
+	phase 0 ; Reset ds.b value to 0
+c_Sonic:	ds.b 1
+c_Tails:	ds.b 1	; here for posterity basically
+c_Last =	*
+c_Knuckles:	ds.b 1
+	dephase
 
 ; ---------------------------------------------------------------------------
 ; Buttons bit numbers
