@@ -52,7 +52,9 @@ Obj_MonitorMain:
 		move.w	x_pos(a0),d4
 		lea	(Player_1).w,a1
 		moveq	#p1_standing_bit,d6
-		bsr.s	SolidObject_Monitor_SonicKnux
+		movem.l	d1-d4,-(sp)
+		bsr.w	SolidObject_Monitor_SonicKnux
+		movem.l	(sp)+,d1-d4
 		jsr	Add_SpriteToCollisionResponseList
 		lea	Ani_Monitor(pc),a1
 		jsr	(Animate_Sprite).w
@@ -115,11 +117,19 @@ locret_1D694:
 ; =============== S U B R O U T I N E =======================================
 
 SolidObject_Monitor_SonicKnux:
-		btst	d6,status(a0)							; Is Sonic/Knux standing on the monitor?
-		bne.s	Monitor_ChkOverEdge				; If so, branch
-		cmpi.b	#id_Roll,anim(a1)					; Is Sonic/Knux in their rolling animation?
-		beq.s	locret_1D694						; If so, return
-		jmp	SolidObject_cont
+		btst	d6,status(a0)		; Is Sonic/Knux standing on the monitor?
+		bne.s	Monitor_ChkOverEdge	; If so, branch
+		cmpi.b	#id_Roll,anim(a1)		; Is Sonic/Knux in their rolling animation?
+		beq.s	.ret		; If so, return
+		cmpi.b	#c_Knuckles,character_id(a1)	; Is character Knuckles?
+		jne		SolidObject_cont		; If not, branch
+		cmpi.b	#1,double_jump_flag(a1)	; Is Knuckles gliding?
+		beq.s	.ret		; If so, return
+		cmpi.b	#3,double_jump_flag(a1)	; Is Knuckles sliding after gliding?
+		jne		SolidObject_cont		; If not, branch
+
+	.ret:
+		rts
 
 ; =============== S U B R O U T I N E =======================================
 

@@ -533,7 +533,7 @@ Knuckles_Wall_Climb:
 		; Knuckles is climbing down.
 
 		; ...I'm not sure what this code is for.
-		cmpi.b	#frK_Climb6+1,mapping_frame(a0)
+		cmpi.b	#frK_Climb4+1,mapping_frame(a0)
 		bne.s	.skip3
 		move.b	#frK_Climb1,mapping_frame(a0)
 		subq.w	#3,y_pos(a0)
@@ -606,7 +606,7 @@ Knuckles_Wall_Climb:
 		bne.w	.climbingDown_ReverseGravity
 
 		; ...I'm not sure what this code is for.
-		cmp.b	#frK_Climb6+1,mapping_frame(a0)
+		cmp.b	#frK_Climb4+1,mapping_frame(a0)
 		bne.s	.skip4
 		move.b	#frK_Climb1,mapping_frame(a0)
 		addq.w	#3,y_pos(a0)
@@ -765,37 +765,24 @@ Knuckles_Wall_Climb:
 		; Only animate every 4 frames.
 		subq.b	#1,double_jump_property(a0)
 		bpl.s	.notMoving
-		move.b	#3,double_jump_property(a0)
+		move.b	#6,double_jump_property(a0)
 
 		; Add delta to animation frame.
 		add.b	mapping_frame(a0),d1
 		move.b	(Ctrl_1_held_logical).w,d0
-		btst	#button_up,d0
-		bne.s	.ClimbUpAni
-		btst	#button_down,d0
-		bne.s	.ClimbDownAni
+		andi.b	#button_up_mask|button_down_mask,d0
+		bne.s	.ClimbAni
 		bra.s	.ResetAniClimb
 
-	.ClimbUpAni:
+	.ClimbAni:
 		cmp.b	#frK_Climb1,d1
 		bcc.s	.noLoop1
-		move.b	#frK_Climb6,d1
-		bra.s	.noLoop2
+		move.b	#frK_Climb4,d1
 
 	.noLoop1:
-		cmp.b	#frK_Climb6,d1
+		cmp.b	#frK_Climb4,d1
 		bls.s	.noLoop2
 		move.b	#frK_Climb1,d1
-		bra.s	.noLoop2
-
-	.ClimbDownAni:
-		cmp.b	#frK_ClimbD1,d1
-		bcs.s	.noLoop1_D
-		move.b	#frK_ClimbD1,d1
-		bra.s	.noLoop2
-
-	.noLoop1_D:
-		move.b	#frK_ClimbD2,d1
 		bra.s	.noLoop2
 
 	.ResetAniClimb:
@@ -840,7 +827,7 @@ Knuckles_Wall_Climb:
 Knuckles_ClimbUp:
 		move.b	#5,double_jump_flag(a0)		  ; Climb up to	the floor above	you
 
-		cmp.b	#frK_Climb6+1,mapping_frame(a0)
+		cmp.b	#frK_Climb4+1,mapping_frame(a0)
 		beq.s	+
 
 		clr.b	double_jump_property(a0)

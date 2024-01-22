@@ -246,7 +246,14 @@ Touch_Monitor:
 
 .checkdestroy:
 		cmpi.b	#id_Roll,anim(a0)						; is Sonic rolling/jumping?
-		bne.s	.locret
+		beq.s	.break
+		cmpi.b	#c_Knuckles,character_id(a0)					; is player Knuckles?
+		bne.s	.locret								; if not, branch
+		cmpi.b	#1,double_jump_flag(a0)				; is Knuckles gliding?
+		beq.s	.break						; if so, branch
+		cmpi.b	#3,double_jump_flag(a0)				; is Knuckles sliding across the ground after gliding?
+		bne.s	.locret						; if so, branch
+	.break:
 		neg.w	y_vel(a0)
 		move.b	#4,routine(a1)
 		rts
@@ -259,7 +266,7 @@ Touch_Enemy:
 		beq.s	.checkhurtenemy						; if yes, branch
 		cmpi.b	#id_Roll,anim(a0)						; is Sonic rolling/jumping?
 		beq.s	.checkhurtenemy						; if not, branch
-		cmpi.b	#2,character_id(a0)					; is player Knuckles?
+		cmpi.b	#c_Knuckles,character_id(a0)					; is player Knuckles?
 		bne.s	.notknuckles							; if not, branch
 		cmpi.b	#1,double_jump_flag(a0)				; is Knuckles gliding?
 		beq.s	.checkhurtenemy						; if so, branch
@@ -269,7 +276,7 @@ Touch_Enemy:
 ; ---------------------------------------------------------------------------
 
 .notknuckles:
-		cmpi.b	#1,character_id(a0)					; is player Tails
+		cmpi.b	#c_Tails,character_id(a0)					; is player Tails
 		bne.w	Touch_ChkHurt						; if not, branch
 		tst.b	double_jump_flag(a0)						; is Tails flying ("gravity-affected")
 		beq.w	Touch_ChkHurt						; if not, branch

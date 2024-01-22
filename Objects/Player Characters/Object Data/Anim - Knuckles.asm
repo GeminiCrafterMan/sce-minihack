@@ -201,8 +201,6 @@ frK_Climb1:			ds.b 1
 frK_Climb2:			ds.b 1
 frK_Climb3:			ds.b 1
 frK_Climb4:			ds.b 1
-frK_Climb5:			ds.b 1
-frK_Climb6:			ds.b 1
 frK_ClimbUp1:		ds.b 1
 frK_ClimbUp2:		ds.b 1
 frK_ClimbUp3:		ds.b 1
@@ -210,8 +208,6 @@ frK_GlideFall1:		ds.b 1
 frK_GlideFall2:		ds.b 1
 frK_GlideSlide1:	ds.b 1
 frK_GlideSlide2:	ds.b 1
-frK_ClimbD1:		ds.b 1
-frK_ClimbD2:		ds.b 1
 frK_Last:			ds.b 0
 	even
 	dephase
